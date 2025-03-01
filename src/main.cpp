@@ -1,6 +1,27 @@
 #include "emulator/memory.hpp"
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
+#include "assembler/lexer.hpp"
+#include <iostream>
+#include <fstream>
+#include <ostream>
+#include <vector>
+
+std::string readFile(const std::string& filename) {
+    std::ifstream myfile(filename);
+    if (!myfile.is_open()) {
+        std::cout << "Unable to open file\n";
+        return "";
+    }
+
+    std::string file;
+    std::string line;
+    while (getline(myfile, line)) {
+        file.append(line + '\n');  // Preserve line breaks
+    }
+    myfile.close();
+    return file;
+}
 
 int main () {
 	Memory mem;
@@ -63,6 +84,14 @@ int main () {
 
 	startup(mem, cpu);
 	run(mem, cpu);
+
+	std::string file = readFile("testFile.s");
+	std::cout << file << std::endl;
+	std::vector<Token> tokenizedFile = tokenize(file);
+
+	for (const auto& token : tokenizedFile) {
+		std::cout << token << '\n';  // Uses the overloaded `operator<<`
+	}
 
 	/*cpu.print();*/
 
