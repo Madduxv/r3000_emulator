@@ -40,6 +40,27 @@ std::vector<Token> tokenize(const std::string& source) {
 			continue;
 		}
 
+		if (c == '$') {
+			word.clear();
+			word += source[i++];
+			while (i < source.size() && (isalnum(source[i]))) {
+				word += source[i++];
+			}
+			i--; // Was skipping characters
+			if (registers.find(word) != registers.end()) {
+				tokens.push_back({TokenType::REGISTER, word, line});
+			}
+		}
+		
+		if (isnumber(c)) {
+			word.clear();
+			while (i < source.size() && (isalnum(source[i]))) { // I'll handle casting later
+				word += source[i++];
+			}
+			i--;
+			tokens.push_back({TokenType::IMMEDIATE, word, line});
+		}
+
 		if (isalnum(c) || c == '_') {
 			word.clear();
 			while (i < source.size() && (isalnum(source[i]) || source[i] == '_')) {
@@ -50,10 +71,7 @@ std::vector<Token> tokenize(const std::string& source) {
 			if (r_type.find(word) != r_type.end() || i_type.find(word) != i_type.end() || j_type.find(word) != j_type.end() || word=="li") {
 				tokens.push_back({TokenType::INSTRUCTION, word, line});
 				continue;
-			} else if (registers.find(word) != registers.end()) {
-				tokens.push_back({TokenType::REGISTER, word, line});
-			}
-			else {
+			} else {
 				tokens.push_back({TokenType::LABEL, word, line});
 				continue;
 			}
