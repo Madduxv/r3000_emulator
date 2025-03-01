@@ -3,6 +3,7 @@
 #include <string>
 #include "assembler/symbols.hpp"
 
+// TODO: Handle pseudo instructions
 
 std::map<std::string, uint16_t> r_type = {
 	{"syscall", 0x0c}, { "sll", 0x00  },  { "srl", 0x02  },  { "sra", 0x03  },

@@ -1,10 +1,10 @@
 .globl _main
 
 _main:
-				li $t1, 0x2a # Ah yes this is a comment
-				li $t2, 0x01
+				addi $t1, $zero, 0x2a # Ah yes this is a comment
+				addi $t2, $zero, 0x01
 				add $t3, $t1, $t2
-				li $v0, 10
+				addi $v0, $zero, 10
 				syscall
 	// this is also a comment /
 .end _main

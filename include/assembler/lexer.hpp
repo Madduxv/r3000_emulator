@@ -12,7 +12,8 @@ enum class TokenType {
     COMMA,
     LPAREN,
     RPAREN,
-    NEWLINE
+    DIRECTIVE, 
+    END
 };
 
 struct Token {
