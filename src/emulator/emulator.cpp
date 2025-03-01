@@ -20,7 +20,7 @@ void run(Memory &mem, CPU &cpu) {
 		/*std::cout << std::hex << cpu.getRegister(0xC) << std::endl;*/
 		execute(instr, cpu, mem);
 		std::this_thread::sleep_for(std::chrono::milliseconds(25));
-	/*} while (true);*/
+		/*} while (true);*/
 	} while (!(mem.read32(cpu.pc) == 0x0000000C && cpu.getRegister(2) == 0x0A));
 
 }
@@ -48,12 +48,15 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
 				break;
 
 			case 0x00: // SLL
+				cpu.setRegister(instr.rd, cpu.getRegister(instr.rt) << instr.shamt);
 				break;
 
 			case 0x02: // SRL
+				cpu.setRegister(instr.rd, cpu.getRegister(instr.rt) >> instr.shamt);
 				break;
 
 			case 0x03: // SRA
+				cpu.setRegister(instr.rd, static_cast<int32_t>(cpu.getRegister(instr.rt)) >> instr.shamt);
 				break;
 
 			case 0x08: // JR
@@ -62,6 +65,8 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
 				break;
 
 			case 0x09: // JALR
+				cpu.setRegister(instr.rd, cpu.pc);  // Save return address
+				cpu.pc = cpu.getRegister(instr.rs) & 0xFFFF;
 				break;
 
 			case 0x18: // MULT
@@ -123,9 +128,11 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
 				break;
 
 			case 0x2a: // SLT
+				cpu.setRegister(instr.rd, (static_cast<int32_t>(cpu.getRegister(instr.rs)) < static_cast<int32_t>(cpu.getRegister(instr.rt))) ? 1 : 0);
 				break;
 
 			case 0x2b: // SLTU
+				cpu.setRegister(instr.rd, (cpu.getRegister(instr.rs) < cpu.getRegister(instr.rt)) ? 1 : 0);
 				break;
 
 		}
@@ -192,6 +199,7 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
 			break;
 
 		case 0x0B: // SLTUI
+			cpu.setRegister(instr.rt, (cpu.getRegister(instr.rs) < static_cast<uint32_t>(instr.imm)) ? 1 : 0);
 			break;
 
 		case 0x0C: // ANDI
@@ -207,30 +215,39 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
 			break;
 
 		case 0x0F: // LUI
+			cpu.setRegister(instr.rt, instr.imm << 16);
 			break;
 
 		case 0x20: // LB
+			cpu.setRegister(instr.rt, static_cast<int8_t>(mem.read8(cpu.getRegister(instr.rs) + instr.imm)));
 			break;
 
 		case 0x21: // LH
+			cpu.setRegister(instr.rt, static_cast<int16_t>(mem.read16(cpu.getRegister(instr.rs) + instr.imm)));
 			break;
 
 		case 0x23: // LW
+			cpu.setRegister(instr.rt, mem.read32(cpu.getRegister(instr.rs) + instr.imm));
 			break;
 
 		case 0x24: // LBU
+			cpu.setRegister(instr.rt, static_cast<uint8_t>(mem.read8(cpu.getRegister(instr.rs) + instr.imm)));
 			break;
 
 		case 0x25: // LHU
+			cpu.setRegister(instr.rt, static_cast<uint16_t>(mem.read16(cpu.getRegister(instr.rs) + instr.imm)));
 			break;
 
 		case 0x28: // SB
+			mem.write8(cpu.getRegister(instr.rs) + instr.imm, static_cast<uint8_t>(cpu.getRegister(instr.rt)));
 			break;
 
 		case 0x29: // SH
+			mem.write16(cpu.getRegister(instr.rs) + instr.imm, static_cast<uint16_t>(cpu.getRegister(instr.rt)));
 			break;
 
 		case 0x2b: // SW
+			mem.write32(cpu.getRegister(instr.rs) + instr.imm, cpu.getRegister(instr.rt));
 			break;
 
 	}

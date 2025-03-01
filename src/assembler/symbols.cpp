@@ -32,38 +32,23 @@ std::map<std::string, uint16_t> j_type = {
 };
 
 std::map<std::string, uint16_t> i_type = {
-				{ "BEQ", 0x04  },
-				{ "BNE", 0x05  },
-				{ "BLEZ", 0x06  },
-				{ "BGTZ", 0x07  },
-				{ "ADDI", 0x08  },
-				{ "ADDIU", 0x09  },
-				{ "SLTI", 0x0A  },
-				{ "SLTUI", 0x0B  },
-				{ "ORI", 0x0D  },
-				{ "XORI", 0x0E  },
-				{ "LUI", 0x0F  },
-				{ "LH", 0x21  },
-				{ "LBU", 0x24  },
-				{ "SB", 0x28  },
+				{ "beq", 0x04  },
+				{ "bne", 0x05  },
+				{ "blez", 0x06  },
+				{ "bgtz", 0x07  },
+				{ "addi", 0x08  },
+				{ "li", 0x08  },
+				{ "addiu", 0x09  },
+				{ "slti", 0x0A  },
+				{ "sltiu", 0x0B  },
+				{ "ori", 0x0D  },
+				{ "xori", 0x0E  },
+				{ "lui", 0x0F  },
+				{ "lh", 0x21  },
+				{ "lbu", 0x24  },
+				{ "sb", 0x28  },
 				{ "SW", 0x2b  },
 };
-
-/*Registers:
-	 *
-	 * 0:									zero reg
-	 * 1:									at (for assembler don't worry about it)
-	 * 2 - 3:							funct return values
-	 * 4 - 7:							funct args
-	 * 8 - 9 / 24 - 25:		temp / saved (caller)
-	 * 16 - 23:						saved (callee)
-	 * 26 - 27:						for a kernal (lol no)
-	 * 28:								global pointer
-	 * 29:								stack pointer
-	 * 30:								frame reg or another saved reg
-	 * 31:								return address
-	 *
-	 */
 
 std::map<std::string, uint16_t> registers = {
 				{"zero", 0},
