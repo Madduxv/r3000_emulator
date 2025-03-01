@@ -2,6 +2,7 @@
 #include "assembler/symbols.hpp"
 #include <cctype>
 #include <iostream>
+#include "string"
 
 std::ostream& operator<<(std::ostream& out, const Token& token) {
     out << "Token(Type: " << static_cast<int>(token.token)  // Assuming token.token is an enum
@@ -19,7 +20,21 @@ std::vector<Token> tokenize(const std::string& source) {
 		char c = source[i];
 
 		if (isspace(c)) {
-			if (c == '\n') line++;
+			if (c == '\n') {line++;}
+			continue;
+		}
+
+		if (c == '#') {
+			while (i < source.size() && source[i] != '\n') {i++;}
+			continue;
+		}
+
+		// I am so glad that c++ halts checking when it does, so I don't
+		// need a more creative solution for checking for checking for //
+		if (c == '/' && i + 1 < source.size() && source[i + 1] == '/') {
+			while (i < source.size() && source[i] != '\n') {
+				i++;  
+			}
 			continue;
 		}
 
@@ -57,8 +72,8 @@ std::vector<Token> tokenize(const std::string& source) {
 			while (i < source.size() && (isalnum(source[i]))) { // I'll handle casting later
 				word += source[i++];
 			}
-			i--;
 			tokens.push_back({TokenType::IMMEDIATE, word, line});
+			continue;
 		}
 
 		if (isalnum(c) || c == '_') {
