@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 
+// yes, I used enum class just to get the pretty scope qualifier (same with AST)
 enum class TokenType {
     INSTRUCTION,
     REGISTER,

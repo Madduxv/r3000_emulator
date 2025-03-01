@@ -89,8 +89,8 @@ int main () {
 	std::cout << file << std::endl;
 	std::vector<Token> tokenizedFile = tokenize(file);
 
-	for (const auto& token : tokenizedFile) {
-		std::cout << token << '\n';  // Uses the overloaded `operator<<`
+	for (const Token& token : tokenizedFile) {
+		std::cout << token << '\n';
 	}
 
 	/*cpu.print();*/
