@@ -27,8 +27,8 @@ std::map<std::string, uint16_t> r_type = {
 };
 
 std::map<std::string, uint16_t> j_type = {
-				{ "J", 0x02  },
-				{ "JAL", 0x03  },
+				{ "j", 0x02  },
+				{ "jal", 0x03  },
 };
 
 std::map<std::string, uint16_t> i_type = {
@@ -37,7 +37,6 @@ std::map<std::string, uint16_t> i_type = {
 				{ "blez", 0x06  },
 				{ "bgtz", 0x07  },
 				{ "addi", 0x08  },
-				{ "li", 0x08  },
 				{ "addiu", 0x09  },
 				{ "slti", 0x0A  },
 				{ "sltiu", 0x0B  },
@@ -47,7 +46,7 @@ std::map<std::string, uint16_t> i_type = {
 				{ "lh", 0x21  },
 				{ "lbu", 0x24  },
 				{ "sb", 0x28  },
-				{ "SW", 0x2b  },
+				{ "sw", 0x2b  },
 };
 
 std::map<std::string, uint16_t> registers = {
