@@ -90,12 +90,6 @@ int main () {
 	std::cout << file << std::endl;
 
 	std::vector<Token> tokenizedFile = tokenize(file);
-
-	for (const Token& token : tokenizedFile) {
-		std::cout << token << '\n';
-	}
-  std::cout << std::endl;
-
   std::vector<ASTNode> AST = parse(tokenizedFile);
 
 	for (const ASTNode& node : AST) {

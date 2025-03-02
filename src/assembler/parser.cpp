@@ -1,5 +1,6 @@
 #include "assembler/parser.hpp"
 #include "assembler/lexer.hpp"
+#include <cstdlib>
 #include <vector>
 #include <iostream>
 
@@ -35,12 +36,25 @@ std::vector<ASTNode> parse(std::vector<Token> tokens) {
       node.val = token.val;
       i++;
 
+      // .globl is special
+      if (token.token == TokenType::DIRECTIVE && token.val == ".globl") {
+        if (i < tokens.size() && tokens[i].token == TokenType::LABEL) {
+          node.args.push_back(tokens[i]);
+          i++;
+        } else {
+          std::cout << "Error: .globl must be followed by a label\n";
+          exit(1);
+        }
+      }
+
       while (i < tokens.size() && 
         tokens[i].token != TokenType::INSTRUCTION &&
         tokens[i].token != TokenType::LABEL && 
         tokens[i].token != TokenType::DIRECTIVE) {
 
-        node.args.push_back(tokens[i]);
+        if (tokens[i].token != TokenType::COMMA) {
+          node.args.push_back(tokens[i]);
+        }
         i++;
 
       }
