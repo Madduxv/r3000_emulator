@@ -103,6 +103,17 @@ std::vector<Token> tokenize(const std::string& source) {
 			continue;
 		}
 
+    if ('\"' == c) {
+      word.clear();
+      word += source[i++];
+      while (i<source.size() && '\"' != source[i]) {
+        word += source[i++];
+      }
+      word += '\"'; // consume that last "
+      tokens.push_back({TokenType::STRING, word, line});
+      continue;
+    }
+
 	}
 
 	return tokens;
