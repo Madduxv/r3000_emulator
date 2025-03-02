@@ -1,3 +1,4 @@
+#include "assembler/parser.hpp"
 #include "emulator/memory.hpp"
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
@@ -87,12 +88,19 @@ int main () {
 
 	std::string file = readFile("testFile.s");
 	std::cout << file << std::endl;
+
 	std::vector<Token> tokenizedFile = tokenize(file);
 
 	for (const Token& token : tokenizedFile) {
 		std::cout << token << '\n';
 	}
+  std::cout << std::endl;
 
+  std::vector<ASTNode> AST = parse(tokenizedFile);
+
+	for (const ASTNode& node : AST) {
+		std::cout << node << '\n';
+	}
 	/*cpu.print();*/
 
 	return 0;

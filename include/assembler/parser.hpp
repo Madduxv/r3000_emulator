@@ -1,18 +1,22 @@
 #ifndef PARSER_HPP
 #define PARSER_HPP
 
+#include "assembler/lexer.hpp"
 #include <string>
 #include <vector>
 
+/*enum class Type {INSTRUCTION, LABEL, DIRECTIVE};*/
+
 struct ASTNode {
-    // yes, I used enum class just to get the pretty scope qualifier
-    enum class Type {INSTRUCTION, LABEL, DIRECTIVE};
-    Type nodeType;
-    std::string val;
-    std::vector<std::string> args;
+public:
+  // yes, I used enum class just to get the pretty scope qualifier
+  TokenType type;
+  std::string val;
+  std::vector<Token> args;
 };
 
-extern std::vector<ASTNode> AST;
+std::vector<ASTNode> parse(std::vector<Token> tokens);
+std::ostream& operator<<(std::ostream& out, const ASTNode& node);
 
 #endif // !PARSER_HPP
 

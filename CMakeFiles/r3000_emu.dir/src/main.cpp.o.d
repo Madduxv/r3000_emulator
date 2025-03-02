@@ -1,6 +1,7 @@
 CMakeFiles/r3000_emu.dir/src/main.cpp.o: \
   /Users/madduxv/programming/cpp/R3000_Emu/src/main.cpp \
-  /Users/madduxv/programming/cpp/R3000_Emu/include/emulator/memory.hpp \
+  /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/parser.hpp \
+  /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/lexer.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/vector \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/copy.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/copy_move_common.h \
@@ -903,10 +904,10 @@ CMakeFiles/r3000_emu.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/cstdarg \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__split_buffer \
+  /Users/madduxv/programming/cpp/R3000_Emu/include/emulator/memory.hpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/emulator/cpu.hpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/emulator/emulator.hpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/emulator/instructions.hpp \
-  /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/lexer.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/istream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/ostream \
