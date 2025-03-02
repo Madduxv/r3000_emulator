@@ -37,7 +37,7 @@ std::vector<ASTNode> parse(std::vector<Token> tokens) {
       i++;
 
       // .globl is special
-      if (token.token == TokenType::DIRECTIVE && token.val == ".globl") {
+      if (token.token == TokenType::DIRECTIVE && (".globl" == token.val || ".end" == token.val)) {
         if (i < tokens.size() && tokens[i].token == TokenType::LABEL) {
           node.args.push_back(tokens[i]);
           i++;
