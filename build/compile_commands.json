@@ -13,12 +13,6 @@
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu/build",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/assembler/output.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/output.cpp",
-  "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/assembler/output.cpp",
-  "output": "CMakeFiles/r3000_emu.dir/src/assembler/output.cpp.o"
-},
-{
-  "directory": "/Users/madduxv/programming/cpp/R3000_Emu/build",
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/parser.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/assembler/parser.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o"

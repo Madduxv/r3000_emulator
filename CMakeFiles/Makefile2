@@ -85,12 +85,12 @@ clean: CMakeFiles/r3000_emu.dir/clean
 CMakeFiles/r3000_emu.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/madduxv/programming/cpp/R3000_Emu/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target r3000_emu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/madduxv/programming/cpp/R3000_Emu/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target r3000_emu"
 .PHONY : CMakeFiles/r3000_emu.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/r3000_emu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/madduxv/programming/cpp/R3000_Emu/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/madduxv/programming/cpp/R3000_Emu/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/r3000_emu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/madduxv/programming/cpp/R3000_Emu/CMakeFiles 0
 .PHONY : CMakeFiles/r3000_emu.dir/rule
@@ -102,7 +102,7 @@ r3000_emu: CMakeFiles/r3000_emu.dir/rule
 # codegen rule for target.
 CMakeFiles/r3000_emu.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/madduxv/programming/cpp/R3000_Emu/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target r3000_emu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/madduxv/programming/cpp/R3000_Emu/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Finished codegen for target r3000_emu"
 .PHONY : CMakeFiles/r3000_emu.dir/codegen
 
 # clean rule for target.

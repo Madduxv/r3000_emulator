@@ -177,30 +177,6 @@ src/assembler/lexer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.s
 .PHONY : src/assembler/lexer.cpp.s
 
-src/assembler/output.o: src/assembler/output.cpp.o
-.PHONY : src/assembler/output.o
-
-# target to build an object file
-src/assembler/output.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/src/assembler/output.cpp.o
-.PHONY : src/assembler/output.cpp.o
-
-src/assembler/output.i: src/assembler/output.cpp.i
-.PHONY : src/assembler/output.i
-
-# target to preprocess a source file
-src/assembler/output.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/src/assembler/output.cpp.i
-.PHONY : src/assembler/output.cpp.i
-
-src/assembler/output.s: src/assembler/output.cpp.s
-.PHONY : src/assembler/output.s
-
-# target to generate assembly for a file
-src/assembler/output.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/src/assembler/output.cpp.s
-.PHONY : src/assembler/output.cpp.s
-
 src/assembler/parser.o: src/assembler/parser.cpp.o
 .PHONY : src/assembler/parser.o
 
@@ -384,9 +360,6 @@ help:
 	@echo "... src/assembler/lexer.o"
 	@echo "... src/assembler/lexer.i"
 	@echo "... src/assembler/lexer.s"
-	@echo "... src/assembler/output.o"
-	@echo "... src/assembler/output.i"
-	@echo "... src/assembler/output.s"
 	@echo "... src/assembler/parser.o"
 	@echo "... src/assembler/parser.i"
 	@echo "... src/assembler/parser.s"

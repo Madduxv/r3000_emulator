@@ -62,7 +62,7 @@ std::vector<ASTNode> parse(std::vector<Token> tokens) {
       }
       AST.push_back(node);
     } else {
-      i++; // How did we get here?
+      i++;
     }
 
   }

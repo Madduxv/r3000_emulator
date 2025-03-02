@@ -21,4 +21,5 @@ _main:
 .data
 
   hello: .ascii "Hello, World!\n"
+  hello2: .asciiz "Asm is easy\n"
 

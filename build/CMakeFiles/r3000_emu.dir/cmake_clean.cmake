@@ -3,8 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o.d"
   "CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o"
   "CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o.d"
-  "CMakeFiles/r3000_emu.dir/src/assembler/output.cpp.o"
-  "CMakeFiles/r3000_emu.dir/src/assembler/output.cpp.o.d"
   "CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o"
   "CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o.d"
   "CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o"
