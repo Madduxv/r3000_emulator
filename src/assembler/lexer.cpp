@@ -44,7 +44,11 @@ std::vector<Token> tokenize(const std::string& source) {
 				tokens.push_back({TokenType::INSTRUCTION, word, line});
 				continue;
 			} else {
-				tokens.push_back({TokenType::LABEL, word, line});
+        if (i+1 < source.size() && ':' == source[i+1]) {
+          tokens.push_back({TokenType::LABEL_DECLARATION, word, line});
+        } else {
+          tokens.push_back({TokenType::LABEL, word, line});
+        }
 				continue;
 			}
 

@@ -1,6 +1,7 @@
 #include "assembler/parser.hpp"
 #include "assembler/lexer.hpp"
 #include <cstdlib>
+#include <ostream>
 #include <vector>
 #include <iostream>
 
@@ -23,13 +24,14 @@ std::ostream& operator<<(std::ostream& out, const ASTNode& node) {
 
 std::vector<ASTNode> parse(std::vector<Token> tokens) {
   std::vector<ASTNode> AST;
+  std::optional<std::string> pendingLabel; // okay we have to get creative
 
   for (int i = 0; i < tokens.size();) {
     Token token = tokens[i];
 
-    if (tokens[i].token == TokenType::INSTRUCTION ||
-        tokens[i].token == TokenType::LABEL || 
-        tokens[i].token == TokenType::DIRECTIVE) {
+    if (tokens[i].token == TokenType::INSTRUCTION || 
+        tokens[i].token == TokenType::DIRECTIVE || 
+        tokens[i].token == TokenType::LABEL_DECLARATION) {
 
       ASTNode node;
       node.type = token.token; // i should probably rename that
@@ -49,7 +51,7 @@ std::vector<ASTNode> parse(std::vector<Token> tokens) {
 
       while (i < tokens.size() && 
         tokens[i].token != TokenType::INSTRUCTION &&
-        tokens[i].token != TokenType::LABEL && 
+        tokens[i].token != TokenType::LABEL_DECLARATION && 
         tokens[i].token != TokenType::DIRECTIVE) {
 
         if (tokens[i].token != TokenType::COMMA) {

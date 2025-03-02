@@ -1,7 +1,10 @@
 #include <cstdint>
+#include <iostream>
 #include <map>
 #include <string>
 #include "assembler/symbols.hpp"
+#include "assembler/lexer.hpp"
+#include "assembler/parser.hpp"
 
 // TODO: Handle pseudo instructions
 
@@ -24,6 +27,7 @@ std::map<std::string, uint16_t> i_type = {
 	{ "lbu", 0x24  },  { "sb", 0x28 },    { "sw", 0x2b  },
 };
 
+// I probably should have just used the number after the $
 std::map<std::string, uint16_t> registers = {
 	{"$zero", 0}, {"$at", 1},  {"$v0", 2},  {"$v1", 3},
 	{"$a0", 4},   {"$a1", 5},  {"$a2", 6},  {"$a3", 7},
@@ -43,4 +47,33 @@ std::map<std::string, uint16_t> registers = {
 	{"$28", 28},  {"$29", 29}, {"$30", 30}, {"$31", 31},
 };
 
-// I probably should have just used the number after the $
+std::map<std::string, uint32_t> labels;
+
+void getSymbols(const std::vector<ASTNode>& ast) {
+  uint32_t addr = 0;
+  for (const ASTNode& node : ast) {
+    if (node.type == TokenType::LABEL_DECLARATION) {
+      labels[node.val] = addr;
+      // ^^ not sure how I feel about this syntax
+    } else {
+      addr +=4;
+    }
+  }
+}
+
+void resolveSymbols(std::vector<ASTNode>& ast) {
+    for (ASTNode& node : ast) {
+        for (Token& arg : node.args) {
+      // using the word token instead of type was definitely a mistake lol
+      // will totally refactor
+            if (arg.token == TokenType::LABEL) {
+                if (labels.find(arg.val) != labels.end()) {
+                    arg.val = std::to_string(labels[arg.val]);
+                } else {
+                    std::cout << "Error: Undefined label " << arg.val << "\n";
+                    exit(1);
+                }
+            }
+        }
+    }
+}

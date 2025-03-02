@@ -1,4 +1,5 @@
 #include "assembler/parser.hpp"
+#include "assembler/symbols.hpp"
 #include "emulator/memory.hpp"
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
@@ -87,14 +88,28 @@ int main () {
 	run(mem, cpu);
 
 	std::string file = readFile("testFile.s");
-	std::cout << file << std::endl;
+	/*std::cout << file << std::endl;*/
 
 	std::vector<Token> tokenizedFile = tokenize(file);
-  std::vector<ASTNode> AST = parse(tokenizedFile);
+  /*for (const auto& token : tokenizedFile) {*/
+  /*  std::cout << token << std::endl;*/
+  /*}*/
 
+  std::vector<ASTNode> AST = parse(tokenizedFile);
+	/*for (const ASTNode& node : AST) {*/
+	/*	std::cout << node << '\n';*/
+	/*}*/
+  
+  getSymbols(AST);
+  for (const auto& key : labels) {
+    std::cout << key.first << ", " << "0x" << std::hex << key.second << std::endl;
+  }
+
+  resolveSymbols(AST);
 	for (const ASTNode& node : AST) {
 		std::cout << node << '\n';
 	}
+
 	/*cpu.print();*/
 
 	return 0;

@@ -11,6 +11,7 @@ enum class TokenType {
     IMMEDIATE,
     LABEL,
     COMMA,
+    LABEL_DECLARATION,
     LPAREN,
     RPAREN,
     DIRECTIVE, 
