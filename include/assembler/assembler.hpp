@@ -1,22 +1,25 @@
 #ifndef ASSEMBLER_HPP
 #define ASSEMBLER_HPP
 
+#include "assembler/parser.hpp"
 #include <cstdint>
 #include <string>
 #include <vector>
+
 struct Assembler {
   std::vector<uint8_t> machineCode;
-  uint32_t* asciiAddrPtr;
-  uint32_t* intAddrPtr;
+  std::vector<ASTNode> AST;
+  uint32_t asciiAddrPtr;
+  uint32_t intAddrPtr;
 
-  static uint32_t encodeRType(uint8_t opcode, uint8_t rs, uint8_t rt, uint8_t rd, uint8_t shamt, uint8_t funct);
-  static uint32_t encodeIType(uint8_t opcode, uint8_t rs, uint8_t rt, int16_t imm);
-  static uint32_t encodeJType(uint8_t opcode, uint32_t address);
-  static void insertGlobal();
+  uint32_t encodeRType(const ASTNode& node);
+  uint32_t encodeIType(const ASTNode& node);
+  uint32_t encodeJType(const ASTNode& node);
+  void insertGlobal();
 
 public:
-  Assembler();
-  std::vector<uint8_t> assemble(std::string filename);
+  Assembler(const std::vector<ASTNode>& AST);
+  std::vector<uint8_t> assemble(const std::string& filename);
 };
 
 
