@@ -13,6 +13,12 @@ _main:
   syscall
   #sub $t3, $t3, $t4
   #bgtz, $t3, -3
+
+  addi $v0, $zero, 4
+  ori $a1, hello2
+  addi $a2, $zero, 14
+  syscall
+
   addi $v0, $zero, 10
   syscall
   // this is also a comment /
