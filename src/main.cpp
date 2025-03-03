@@ -1,29 +1,16 @@
+#include "assembler/assembler.hpp"
 #include "assembler/parser.hpp"
 #include "assembler/symbols.hpp"
 #include "emulator/memory.hpp"
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
 #include "assembler/lexer.hpp"
+#include <cstdint>
 #include <iostream>
-#include <fstream>
 #include <ostream>
+#include <sstream>
 #include <vector>
 
-std::string readFile(const std::string& filename) {
-    std::ifstream myfile(filename);
-    if (!myfile.is_open()) {
-        std::cout << "Unable to open file\n";
-        return "";
-    }
-
-    std::string file;
-    std::string line;
-    while (getline(myfile, line)) {
-        file.append(line + '\n');  // Preserve line breaks
-    }
-    myfile.close();
-    return file;
-}
 
 int main () {
 	Memory mem;
@@ -87,29 +74,15 @@ int main () {
 	startup(mem, cpu);
 	run(mem, cpu);
 
-	std::string file = readFile("testFile.s");
-	/*std::cout << file << std::endl;*/
+  /*std::stringstream ss;*/
+  /*uint32_t x;*/
+  /*ss << std::hex << "0x2a";*/
+  /*ss >> x;*/
+  /*std::cout << x << std::endl;*/
+  /*std::cout << x+1 << std::endl;*/
 
-	std::vector<Token> tokenizedFile = tokenize(file);
-  /*for (const auto& token : tokenizedFile) {*/
-  /*  std::cout << token << std::endl;*/
-  /*}*/
-
-  std::vector<ASTNode> AST = parse(tokenizedFile);
-	/*for (const ASTNode& node : AST) {*/
-	/*	std::cout << node << '\n';*/
-	/*}*/
-  
-  getSymbols(AST);
-  for (const auto& key : labels) {
-    std::cout << key.first << ", " << "0x" << std::hex << key.second << std::endl;
-  }
-
-  resolveSymbols(AST);
-	for (const ASTNode& node : AST) {
-		std::cout << node << '\n';
-	}
-
+  Assembler assembler("testFile.s");
+  assembler.assemble();
 	/*cpu.print();*/
 
 	return 0;
