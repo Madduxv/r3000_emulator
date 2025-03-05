@@ -15,3 +15,11 @@
 - v0 = 3:  print_double
 - v0 = 4:  print_string
 - v0 = 10: exit
+
+### Build Your Own: Sources
+- https://student.cs.uwaterloo.ca/~isg/res/mips/opcodes
+- https://www3.ntu.edu.sg/home/smitha/fyp_gerald/jrInstruction.html
+- http://www.netyaroze-europe.com/~robertj/htmls/r3000_instructionset.html
+- https://student.cs.uwaterloo.ca/~isg/res/mips/traps
+- http://homepage.divms.uiowa.edu/~ghosh/1-28-10.pdf
+- https://youtube.com/playlist?list=PLUDlas_Zy_qC7c5tCgTMYq2idyyT241qs&si=0SeoRsojt6gcmgl2
