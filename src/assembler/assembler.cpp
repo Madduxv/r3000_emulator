@@ -33,14 +33,6 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
   resolveSymbols(this->AST);
   this->instrAddrPtr = setStart(mem);
 
-  for (int i = 0; i < 14; i++) {
-    std::cout << mem.read8(0x5000 + i);
-  }
-  for (int i = 0; i < 12; i++) {
-    std::cout << mem.read8(20515 + i);
-  }
-
-
   if (this->instrAddrPtr == 0xFFFFFFFF) {
     std::cout << "ERROR: No start address present" << std::endl;
     exit(1);
@@ -69,14 +61,6 @@ uint32_t Assembler::encodePseudo(const ASTNode& node) {
   return 0;
 }
 
-void Assembler::insertVariable(const ASTNode& node) {
-
-}
-
-void Assembler::insertInstr(uint32_t addr, uint32_t instr) {
-
-}
-
 uint32_t Assembler::setStart(Memory& mem) {
   uint32_t startAddr;
   for(const ASTNode& node : this->AST) {
@@ -90,6 +74,5 @@ uint32_t Assembler::setStart(Memory& mem) {
 }
 
 
-std::vector<uint8_t> Assembler::assemble() {
-  return {};
+void Assembler::assemble(Memory& mem) {
 }

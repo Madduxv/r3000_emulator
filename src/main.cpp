@@ -83,7 +83,7 @@ int main () {
 
   Memory testMem;
   Assembler assembler("testFile.s", testMem);
-  assembler.assemble();
+  assembler.assemble(testMem);
 	/*cpu.print();*/
 
 	return 0;

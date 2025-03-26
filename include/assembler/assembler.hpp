@@ -8,7 +8,6 @@
 #include <vector>
 
 struct Assembler {
-  /*Memory mem;*/
   std::vector<ASTNode> AST;
   uint32_t varAddrPtr;
   uint32_t instrAddrPtr;
@@ -19,12 +18,9 @@ struct Assembler {
   uint32_t encodePseudo(const ASTNode& node);
   uint32_t setStart(Memory& mem);
 
-  void insertVariable(const ASTNode& node);
-
 public:
   Assembler(const std::string& fileName, Memory& mem);
-  std::vector<uint8_t> assemble();
-  void insertInstr(uint32_t addr, uint32_t instr);
+  void assemble(Memory& mem);
 };
 
 std::string readFile(const std::string& filename);
