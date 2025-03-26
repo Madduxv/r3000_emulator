@@ -22,7 +22,7 @@ struct Assembler {
   void insertVariable(const ASTNode& node);
 
 public:
-  Assembler(const std::string& fileName);
+  Assembler(const std::string& fileName, Memory mem);
   std::vector<uint8_t> assemble();
   void insertInstr(uint32_t addr, uint32_t instr);
 };

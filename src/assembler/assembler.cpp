@@ -1,6 +1,7 @@
 #include "assembler/assembler.hpp"
 #include "assembler/parser.hpp"
 #include "assembler/symbols.hpp"
+#include "emulator/memory.hpp"
 #include <cstdint>
 #include <iostream>
 #include <ostream>
@@ -24,14 +25,22 @@ std::string readFile(const std::string& filename) {
     return file;
 }
 
-Assembler::Assembler(const std::string& fileName): varAddrPtr(0x5000) {
-
+Assembler::Assembler(const std::string& fileName, Memory mem): varAddrPtr(0x5000) {
 	std::string file = readFile("testFile.s");
 	std::vector<Token> tokenizedFile = tokenize(file);
   this->AST = parse(tokenizedFile);
-  getSymbols(this->AST);
+  getSymbols(this->AST, mem);
   resolveSymbols(this->AST);
   this->instrAddrPtr = setStart();
+
+  for (int i = 0; i < 14; i++) {
+    std::cout << mem.read8(0x5000 + i);
+  }
+  for (int i = 0; i < 12; i++) {
+    std::cout << mem.read8(20494 + i);
+  }
+  std::cout << std::endl;
+
 
   if (this->instrAddrPtr == 0xFFFFFFFF) {
     std::cout << "ERROR: No start address present" << std::endl;

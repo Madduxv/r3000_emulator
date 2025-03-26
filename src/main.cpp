@@ -81,7 +81,8 @@ int main () {
   /*std::cout << x << std::endl;*/
   /*std::cout << x+1 << std::endl;*/
 
-  Assembler assembler("testFile.s");
+  Memory testMem;
+  Assembler assembler("testFile.s", testMem);
   assembler.assemble();
 	/*cpu.print();*/
 

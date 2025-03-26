@@ -1,5 +1,12 @@
 .globl _main
 
+.data
+
+  hello: .ascii "Hello, World!\n"
+  hello2: .asciiz "Asm is easy\n"
+
+.text
+
 _main:
   addi $t1, $zero, 0x2a # Ah yes this is a comment
   addi $t2, $zero, 0x01
@@ -24,8 +31,4 @@ _main:
   // this is also a comment /
 .end _main
 
-.data
-
-  hello: .ascii "Hello, World!\n"
-  hello2: .asciiz "Asm is easy\n"
 
