@@ -31,6 +31,7 @@ _main:
 
   addi $v0, $zero, 10
   syscall
+  j 2
   // this is also a comment /
 .end _main
 

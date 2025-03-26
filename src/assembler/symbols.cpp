@@ -2,6 +2,7 @@
 #include <iostream>
 #include <map>
 #include <ostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include "assembler/symbols.hpp"
@@ -73,7 +74,18 @@ void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
         }
 
       } else if (".word" == ast.at(i).val && i < ast.size()-1) {
-        mem.write32(globalAddrPtr++, std::stoull(ast.at(i).args.at(0).val));
+        if (ast.at(i).args.at(0).val.find(',') == std::string::npos) {
+          mem.write32(globalAddrPtr++, std::stoull(ast.at(i).args.at(0).val));
+        } else {
+          std::vector<std::string> v;
+          std::stringstream ss(ast.at(i).args.at(0).val);
+          while (ss.good()) {
+            std::string substr;
+            getline(ss, substr, ',');
+            v.push_back(substr);
+          }
+          //TODO: write the 'words' to the memory
+        }
       } else if (".space" == ast.at(i).val) {
         globalAddrPtr += std::stoull(ast.at(i).args.at(0).val);
       }
