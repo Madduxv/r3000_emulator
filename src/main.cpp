@@ -1,15 +1,8 @@
 #include "assembler/assembler.hpp"
-#include "assembler/parser.hpp"
-#include "assembler/symbols.hpp"
 #include "emulator/memory.hpp"
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
-#include "assembler/lexer.hpp"
 #include <cstdint>
-#include <iostream>
-#include <ostream>
-#include <sstream>
-#include <vector>
 
 
 int main () {

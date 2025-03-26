@@ -24,23 +24,22 @@ std::ostream& operator<<(std::ostream& out, const ASTNode& node) {
 
 std::vector<ASTNode> parse(std::vector<Token> tokens) {
   std::vector<ASTNode> AST;
-  std::optional<std::string> pendingLabel; // okay we have to get creative
 
   for (int i = 0; i < tokens.size();) {
     Token token = tokens[i];
 
-    if (tokens[i].token == TokenType::INSTRUCTION || 
-        tokens[i].token == TokenType::DIRECTIVE || 
-        tokens[i].token == TokenType::LABEL_DECLARATION) {
+    if (tokens[i].type == TokenType::INSTRUCTION || 
+        tokens[i].type == TokenType::DIRECTIVE || 
+        tokens[i].type == TokenType::LABEL_DECLARATION) {
 
       ASTNode node;
-      node.type = token.token; // i should probably rename that
+      node.type = token.type;
       node.val = token.val;
       i++;
 
       // .globl is special
-      if (token.token == TokenType::DIRECTIVE && (".globl" == token.val || ".end" == token.val)) {
-        if (i < tokens.size() && tokens[i].token == TokenType::LABEL) {
+      if (token.type == TokenType::DIRECTIVE && (".globl" == token.val || ".end" == token.val)) {
+        if (i < tokens.size() && tokens[i].type == TokenType::LABEL) {
           node.args.push_back(tokens[i]);
           i++;
         } else {
@@ -50,11 +49,11 @@ std::vector<ASTNode> parse(std::vector<Token> tokens) {
       }
 
       while (i < tokens.size() && 
-        tokens[i].token != TokenType::INSTRUCTION &&
-        tokens[i].token != TokenType::LABEL_DECLARATION && 
-        tokens[i].token != TokenType::DIRECTIVE) {
+        tokens[i].type != TokenType::INSTRUCTION &&
+        tokens[i].type != TokenType::LABEL_DECLARATION && 
+        tokens[i].type != TokenType::DIRECTIVE) {
 
-        if (tokens[i].token != TokenType::COMMA) {
+        if (tokens[i].type != TokenType::COMMA) {
           node.args.push_back(tokens[i]);
         }
         i++;

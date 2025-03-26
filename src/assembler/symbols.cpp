@@ -112,9 +112,7 @@ void allocateAscii(const std::vector<ASTNode>& ast, Memory& mem, int& addrPtr, c
 void resolveSymbols(std::vector<ASTNode>& ast) {
   for (ASTNode& node : ast) {
     for (Token& arg : node.args) {
-      // using the word token instead of type was definitely a mistake lol
-      // will totally refactor
-      if (arg.token == TokenType::LABEL) {
+      if (arg.type == TokenType::LABEL) {
         if (labels.find(arg.val) != labels.end()) {
           arg.val = std::to_string(labels[arg.val]);
         } else {
