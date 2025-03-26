@@ -25,21 +25,20 @@ std::string readFile(const std::string& filename) {
     return file;
 }
 
-Assembler::Assembler(const std::string& fileName, Memory mem): varAddrPtr(0x5000) {
+Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x5000) {
 	std::string file = readFile("testFile.s");
 	std::vector<Token> tokenizedFile = tokenize(file);
   this->AST = parse(tokenizedFile);
   getSymbols(this->AST, mem);
   resolveSymbols(this->AST);
-  this->instrAddrPtr = setStart();
+  this->instrAddrPtr = setStart(mem);
 
   for (int i = 0; i < 14; i++) {
     std::cout << mem.read8(0x5000 + i);
   }
   for (int i = 0; i < 12; i++) {
-    std::cout << mem.read8(20494 + i);
+    std::cout << mem.read8(20515 + i);
   }
-  std::cout << std::endl;
 
 
   if (this->instrAddrPtr == 0xFFFFFFFF) {
@@ -78,7 +77,7 @@ void Assembler::insertInstr(uint32_t addr, uint32_t instr) {
 
 }
 
-uint32_t Assembler::setStart() {
+uint32_t Assembler::setStart(Memory& mem) {
   uint32_t startAddr;
   for(const ASTNode& node : this->AST) {
     if (node.val == ".globl") {

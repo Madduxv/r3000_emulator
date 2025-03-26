@@ -3,7 +3,10 @@
 .data
 
   hello: .ascii "Hello, World!\n"
+  aWord: .word 42069
+  array: .space 20
   hello2: .asciiz "Asm is easy\n"
+
 
 .text
 

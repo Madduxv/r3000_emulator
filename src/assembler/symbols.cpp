@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <ios>
 #include <iostream>
 #include <map>
 #include <ostream>
@@ -58,9 +59,6 @@ void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
   for (int i = idx; i < ast.size()-1; i++) {
     if (ast.at(i).type == TokenType::LABEL_DECLARATION && ast.at(++i).type == TokenType::DIRECTIVE) {
       labels[ast.at(i-1).val] = globalAddrPtr;
-      std::cout << "Label: " << ast.at(i-1).val << std::endl;
-      std::cout << "Value: " << ast.at(i).args.at(0).val << std::endl;
-      std::cout << "Addr:  " << globalAddrPtr << std::endl;
 
       if (".ascii" == ast.at(i).val) {
         for (int j = 0; j < ast.at(i).args.at(0).val.size(); j++) {
@@ -72,11 +70,11 @@ void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
         for (int j = 0; j < ast.at(i).args.at(0).val.size(); j++) {
           if ('\"' == ast.at(i).args.at(0).val.at(j)) {continue;}
           allocateAscii(ast, mem, globalAddrPtr, i, j);
-          mem.write8(globalAddrPtr++, '\0');
+          mem.write8(globalAddrPtr, '\0');
         }
 
       } else if (".word" == ast.at(i).val && i < ast.size()-1) {
-        mem.write32(globalAddrPtr++, std::stoull(ast.at(i+1).args.at(0).val));
+        mem.write32(globalAddrPtr++, std::stoull(ast.at(i).args.at(0).val));
       } else if (".space" == ast.at(i).val) {
         globalAddrPtr += std::stoull(ast.at(i).args.at(0).val);
       }
@@ -99,15 +97,16 @@ void allocateAscii(const std::vector<ASTNode>& ast, Memory& mem, int& addrPtr, c
   if ('\\' == ast.at(i).args.at(0).val.at(j)) {
     j++;
     if ('n' == ast.at(i).args.at(0).val.at(j)) {
-      mem.write8(addrPtr++, (uint8_t)('\n'));
+      mem.write8(addrPtr, (uint8_t)('\n'));
     } else if ('t' == ast.at(i).args.at(0).val.at(j)) {
-      mem.write8(addrPtr++, (uint8_t)('\t'));
+      mem.write8(addrPtr, (uint8_t)('\t'));
     } else if ('r' == ast.at(i).args.at(0).val.at(j)) {
-      mem.write8(addrPtr++, (uint8_t)('\r'));
+      mem.write8(addrPtr, (uint8_t)('\r'));
     }
   } else {
-    mem.write8(addrPtr++, ast.at(i).args.at(0).val.at(j));
+    mem.write8(addrPtr, ast.at(i).args.at(0).val.at(j));
   }
+  addrPtr++;
 }
 
 
