@@ -1,14 +1,17 @@
 #ifndef ASSEMBLER_HPP
 #define ASSEMBLER_HPP
 
+#include "assembler/asminstruction.hpp"
 #include "assembler/parser.hpp"
 #include "emulator/memory.hpp"
 #include <cstdint>
 #include <string>
 #include <vector>
 
+
 struct Assembler {
   std::vector<ASTNode> AST;
+  std::vector<ASMInstruction> Instructions;
   uint32_t varAddrPtr;
   uint32_t instrAddrPtr;
 
@@ -24,6 +27,5 @@ public:
 };
 
 std::string readFile(const std::string& filename);
-
 
 #endif // !ASSEMBLER_HPP

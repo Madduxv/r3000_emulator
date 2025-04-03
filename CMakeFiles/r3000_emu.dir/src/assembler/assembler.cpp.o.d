@@ -1,6 +1,7 @@
 CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o: \
   /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/assembler.cpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/assembler.hpp \
+  /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/asminstruction.hpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/parser.hpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/lexer.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/vector \

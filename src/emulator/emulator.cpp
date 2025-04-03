@@ -4,6 +4,7 @@
 #include "emulator/instructions.hpp"
 
 #include <iostream>
+#include <string>
 /*#include <thread>*/
 
 void startup(Memory& mem, CPU &cpu) {
@@ -57,11 +58,15 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
             break;
           } 
 
-          case 4: // print_string
-            for (uint32_t i = 0; i < cpu.getRegister(6); i++) {
+          case 4: { // print_string
+            int i = 0;
+            char c;
+            while ((c = char(mem.read8(cpu.getRegister(5)) + i) && c != '\0')) {
               std::cout << char(mem.read8(cpu.getRegister(5) + i));
+              i++;
             }
             break;
+          }
 
           case 5: // read_int
             int inputVal;

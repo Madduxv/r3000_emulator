@@ -26,7 +26,7 @@ std::map<std::string, uint16_t> i_type = {
   { "beq", 0x04  },  { "bne", 0x05  },  { "blez", 0x06  }, { "bgtz", 0x07  },
   { "addi", 0x08  }, { "addiu", 0x09 }, { "slti", 0x0A  }, { "sltiu", 0x0B  },
   { "ori", 0x0D  },  { "xori", 0x0E },  { "lui", 0x0F  },  { "lh", 0x21  },
-  { "lbu", 0x24  },  { "sb", 0x28 },    { "sw", 0x2b  },
+  { "lw", 0x23  }, { "lbu", 0x24  },  { "sb", 0x28 },    { "sw", 0x2b  },
 };
 
 // I probably should have just used the number after the $
@@ -84,7 +84,11 @@ void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
             getline(ss, substr, ',');
             v.push_back(substr);
           }
-          //TODO: write the 'words' to the memory
+          for (std::string strWord : v) {
+            int word = std::stoi(strWord);
+            mem.write8(globalAddrPtr, word);
+            globalAddrPtr += 4;
+          }
         }
       } else if (".space" == ast.at(i).val) {
         globalAddrPtr += std::stoull(ast.at(i).args.at(0).val);
@@ -101,6 +105,11 @@ void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
       addr +=4;
     }
   }
+
+  /*for (auto key : labels) {*/
+  /*  std::cout << key.first << ": " << key.second << std::endl;*/
+  /*}*/
+
 }
 
 void allocateAscii(const std::vector<ASTNode>& ast, Memory& mem, int& addrPtr, const int i, int& j) {

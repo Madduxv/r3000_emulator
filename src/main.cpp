@@ -3,6 +3,8 @@
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
 #include <cstdint>
+#include <iostream>
+#include <ostream>
 
 
 int main () {
@@ -36,7 +38,7 @@ int main () {
 
 		0x20020004, // li v0, 4 (SYS_WRITE)
 		0x20055000, // li a1, 0x5000 (buffer addr)
-		0x2006000E, // li a2, 14 (len)
+		/*0x2006000E, // li a2, 14 (len)*/
 
 		0x200B0004, // li t3, #4
 		0x200C0001, // li t4, #1
@@ -75,6 +77,7 @@ int main () {
   /*std::cout << x+1 << std::endl;*/
 
   Memory testMem;
+  std::cout << "We're here 1" << std::endl;
   Assembler assembler("testFile.s", testMem);
   assembler.assemble(testMem);
 	/*cpu.print();*/

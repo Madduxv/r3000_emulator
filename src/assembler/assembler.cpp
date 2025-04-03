@@ -44,22 +44,6 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
 
 }
 
-uint32_t Assembler::encodeRType(const ASTNode& node) {
-  return 0;
-}
-
-uint32_t Assembler::encodeIType(const ASTNode& node) {
-  return 0;
-}
-
-uint32_t Assembler::encodeJType(const ASTNode& node) {
-  return 0;
-}
-
-// I'll add pseudo-instructions last
-uint32_t Assembler::encodePseudo(const ASTNode& node) {
-  return 0;
-}
 
 uint32_t Assembler::setStart(Memory& mem) {
   uint32_t startAddr;

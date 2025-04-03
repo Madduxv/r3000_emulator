@@ -958,6 +958,7 @@ CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/unistd.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/map \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__tree \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/sstream \
   /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/symbols.hpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/parser.hpp \
   /Users/madduxv/programming/cpp/R3000_Emu/include/assembler/lexer.hpp \
