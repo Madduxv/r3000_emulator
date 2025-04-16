@@ -20,11 +20,11 @@ Then, you can run it with:
 - 0xF000 - 0xFFFF - Unused for now
  
 ### Currently implemented syscalls
-- v0 = 1:  print_int
-- v0 = 2:  print_float
-- v0 = 3:  print_double
-- v0 = 4:  print_string
-- v0 = 10: exit
+1. print_int
+2. print_float
+3. print_double
+4. print_string
+10. exit
 
 ### Build Your Own: Sources
 - https://student.cs.uwaterloo.ca/~isg/res/mips/opcodes
