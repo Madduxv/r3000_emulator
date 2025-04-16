@@ -1,4 +1,6 @@
 #include "assembler/assembler.hpp"
+#include "assembler/asminstruction.hpp"
+#include "assembler/lexer.hpp"
 #include "assembler/parser.hpp"
 #include "assembler/symbols.hpp"
 #include "emulator/memory.hpp"
@@ -26,12 +28,19 @@ std::string readFile(const std::string& filename) {
 }
 
 Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x5000) {
+  ASMInstruction encoder;
 	std::string file = readFile("testFile.s");
 	std::vector<Token> tokenizedFile = tokenize(file);
   this->AST = parse(tokenizedFile);
   getSymbols(this->AST, mem);
   resolveSymbols(this->AST);
   this->instrAddrPtr = setStart(mem);
+  
+	for (const ASTNode& node : this->AST) {
+    if (node.type == TokenType::INSTRUCTION) { 
+      this->Instructions.push_back(encoder.encode(node)); 
+    }
+	}
 
   if (this->instrAddrPtr == 0xFFFFFFFF) {
     std::cout << "ERROR: No start address present" << std::endl;

@@ -1,7 +1,6 @@
 #ifndef ASSEMBLER_HPP
 #define ASSEMBLER_HPP
 
-#include "assembler/asminstruction.hpp"
 #include "assembler/parser.hpp"
 #include "emulator/memory.hpp"
 #include <cstdint>
@@ -11,7 +10,7 @@
 
 struct Assembler {
   std::vector<ASTNode> AST;
-  std::vector<ASMInstruction> Instructions;
+  std::vector<uint32_t> Instructions;
   uint32_t varAddrPtr;
   uint32_t instrAddrPtr;
 

@@ -29,6 +29,9 @@ std::map<std::string, uint16_t> i_type = {
   { "lw", 0x23  }, { "lbu", 0x24  },  { "sb", 0x28 },    { "sw", 0x2b  },
 };
 
+std::map<std::string, uint16_t> pseudo = {
+  { "li", 0x02  },
+};
 // I probably should have just used the number after the $
 std::map<std::string, uint16_t> registers = {
   {"$zero", 0}, {"$at", 1},  {"$v0", 2},  {"$v1", 3},

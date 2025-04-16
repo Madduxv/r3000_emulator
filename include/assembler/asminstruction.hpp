@@ -14,9 +14,7 @@ struct ASMInstruction {
 	uint16_t imm;
 	uint32_t addr;
  
-	ASMInstruction encode(const ASTNode node);
-	void print();
-
+	uint32_t encode(const ASTNode node);
   uint32_t encodeRType(const ASTNode& node);
   uint32_t encodeIType(const ASTNode& node);
   uint32_t encodeJType(const ASTNode& node);

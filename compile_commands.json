@@ -1,55 +1,61 @@
 [
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/assembler.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/asminstruction.cpp",
+  "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/assembler/asminstruction.cpp",
+  "output": "CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o"
+},
+{
+  "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/assembler.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/assembler/assembler.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/lexer.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/lexer.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/assembler/lexer.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/parser.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/parser.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/assembler/parser.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/symbols.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/assembler/symbols.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/assembler/symbols.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/cpu.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/cpu.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/emulator/cpu.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/emulator.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/emulator.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/emulator/emulator.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/instructions.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/instructions.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/emulator/instructions.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/memory.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/emulator/memory.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/emulator/memory.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o"
 },
 {
   "directory": "/Users/madduxv/programming/cpp/R3000_Emu",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -o CMakeFiles/r3000_emu.dir/src/main.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/main.cpp",
+  "command": "/usr/bin/c++  -I/Users/madduxv/programming/cpp/R3000_Emu/include -std=gnu++17 -arch arm64 -o CMakeFiles/r3000_emu.dir/src/main.cpp.o -c /Users/madduxv/programming/cpp/R3000_Emu/src/main.cpp",
   "file": "/Users/madduxv/programming/cpp/R3000_Emu/src/main.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/main.cpp.o"
 }

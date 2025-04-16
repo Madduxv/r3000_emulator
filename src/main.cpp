@@ -77,7 +77,6 @@ int main () {
   /*std::cout << x+1 << std::endl;*/
 
   Memory testMem;
-  std::cout << "We're here 1" << std::endl;
   Assembler assembler("testFile.s", testMem);
   assembler.assemble(testMem);
 	/*cpu.print();*/
