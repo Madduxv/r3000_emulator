@@ -1,5 +1,15 @@
 # R3000 Emulator and Assembler
 
+### Usage
+To compile, run:
+```
+make
+```
+Then, you can run it with: 
+```
+./r3000_emu
+```
+
 ### Current memory locations:
 - 0x0000 - 0x4FFF - ROM/Program
 - 0x4FFC - 0x4FFD - Reset Vector 
