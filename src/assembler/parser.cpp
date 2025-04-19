@@ -53,7 +53,7 @@ std::vector<ASTNode> parse(std::vector<Token> tokens) {
         tokens[i].type != TokenType::LABEL_DECLARATION && 
         tokens[i].type != TokenType::DIRECTIVE) {
 
-        if (tokens[i].type != TokenType::COMMA) {
+        if (tokens[i].type != TokenType::COMMA && tokens[i].type != TokenType::LPAREN && tokens[i].type != TokenType::RPAREN) {
           node.args.push_back(tokens[i]);
         }
         i++;

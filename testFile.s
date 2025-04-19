@@ -32,7 +32,8 @@ _main:
 
   addi $v0, $zero, 10
   syscall
-  # lw $6, aWord
+  lw $6, aWord
+  lw $t0, 4($t1)
   lui $1, array
   ori $4, $1, 0x00000000
   lui $1, aWord2

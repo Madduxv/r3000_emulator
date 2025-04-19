@@ -1,16 +1,15 @@
 #include <cstdint>
 #include <iostream>
-#include <map>
-#include <ostream>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include "assembler/symbols.hpp"
 #include "assembler/lexer.hpp"
 
 // TODO: Handle pseudo instructions
 
-std::map<std::string, uint16_t> r_type = {
+std::unordered_map<std::string, uint16_t> r_type = {
   {"syscall", 0x0c}, { "sll", 0x00  },  { "srl", 0x02  },  { "sra", 0x03  },
   { "jr", 0x08  },   { "jalr", 0x09  }, { "mult", 0x18  }, { "multu", 0x19  },
   { "div", 0x1a  },  { "divu", 0x1b  }, { "add", 0x20  },  { "addu", 0x21  },
@@ -18,22 +17,22 @@ std::map<std::string, uint16_t> r_type = {
   { "xor", 0x26  },  { "nor", 0x27  },  { "slt", 0x2a  },  { "sltu", 0x2b  },
 };
 
-std::map<std::string, uint16_t> j_type = {
+std::unordered_map<std::string, uint16_t> j_type = {
   { "j", 0x02  }, { "jal", 0x03  },
 };
 
-std::map<std::string, uint16_t> i_type = {
+std::unordered_map<std::string, uint16_t> i_type = {
   { "beq", 0x04  },  { "bne", 0x05  },  { "blez", 0x06  }, { "bgtz", 0x07  },
   { "addi", 0x08  }, { "addiu", 0x09 }, { "slti", 0x0A  }, { "sltiu", 0x0B  },
   { "ori", 0x0D  },  { "xori", 0x0E },  { "lui", 0x0F  },  { "lh", 0x21  },
   { "lw", 0x23  }, { "lbu", 0x24  },  { "sb", 0x28 },    { "sw", 0x2b  },
 };
 
-std::map<std::string, uint16_t> pseudo = {
+std::unordered_map<std::string, uint16_t> pseudo = {
   { "li", 0x02  },
 };
 // I probably should have just used the number after the $
-std::map<std::string, uint16_t> registers = {
+std::unordered_map<std::string, uint16_t> registers = {
   {"$zero", 0}, {"$at", 1},  {"$v0", 2},  {"$v1", 3},
   {"$a0", 4},   {"$a1", 5},  {"$a2", 6},  {"$a3", 7},
   {"$t0", 8},   {"$t1", 9},  {"$t2", 10}, {"$t3", 11},
@@ -52,7 +51,7 @@ std::map<std::string, uint16_t> registers = {
   {"$28", 28},  {"$29", 29}, {"$30", 30}, {"$31", 31},
 };
 
-std::map<std::string, uint32_t> labels;
+std::unordered_map<std::string, uint32_t> labels;
 
 void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
   int idx = 0;
