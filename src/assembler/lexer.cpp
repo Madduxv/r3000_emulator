@@ -3,7 +3,7 @@
 #include <iostream>
 
 std::ostream& operator<<(std::ostream& out, const Token& token) {
-    out << "Token(Type: " << static_cast<int>(token.token)
+    out << "Token(Type: " << static_cast<int>(token.type)
        << ", Value: " << token.val << ")";
     return out;
 }
