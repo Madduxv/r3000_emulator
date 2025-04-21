@@ -28,7 +28,7 @@ std::string readFile(const std::string& filename) {
 }
 
 Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x5000) {
-  /*ASMInstruction encoder;*/
+  ASMInstruction encoder;
   std::string file = readFile("testFile.s");
   std::vector<Token> tokenizedFile = tokenize(file);
   this->AST = parse(tokenizedFile);
@@ -36,12 +36,12 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
   resolveSymbols(this->AST);
   this->instrAddrPtr = setStart(mem);
 
-  /*for (const ASTNode& node : this->AST) {*/
-  /*  if (node.type == TokenType::INSTRUCTION) { */
-  /*    this->Instructions.push_back(encoder.encode(node, instrAddrPtr)); */
-  /*    this->instrAddrPtr += 4;*/
-  /*  }*/
-  /*}*/
+  for (const ASTNode& node : this->AST) {
+    if (node.type == TokenType::INSTRUCTION) { 
+      this->Instructions.push_back(encoder.encode(node, instrAddrPtr)); 
+      this->instrAddrPtr += 4;
+    }
+  }
 
   if (this->instrAddrPtr == 0xFFFFFFFF) {
     std::cout << "ERROR: No start address present" << std::endl;

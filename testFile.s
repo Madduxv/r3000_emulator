@@ -26,19 +26,13 @@ _main:
   #bgtz, $t3, -3
 
   addi $v0, $zero, 4
-  ori $a1, hello2
+  ori $a1, $a1, hello2
   addi $a2, $zero, 14
   syscall
 
   addi $v0, $zero, 10
   syscall
-  lw $6, aWord
-  lw $t0, 4($t1)
-  lui $1, array
-  ori $4, $1, 0x00000000
-  lui $1, aWord2
-  ori $5, $1, 0x00000000
-  j 2
+  j _main
   // this is also a comment /
 .end _main
 

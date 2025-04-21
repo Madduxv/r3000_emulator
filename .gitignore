@@ -2,6 +2,7 @@ build/*
 CMakeFiles/*
 .cache/*
 obj/*
+core/*
 
 r3000_emu
 Makefile
