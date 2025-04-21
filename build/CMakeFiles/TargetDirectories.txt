@@ -1,3 +1,0 @@
-/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles/r3000_emu.dir
-/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles/edit_cache.dir
-/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles/rebuild_cache.dir

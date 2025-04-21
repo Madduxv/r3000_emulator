@@ -31,7 +31,7 @@ uint32_t ASMInstruction::encode(const ASTNode node, uint32_t address) {
 /**
  * @brief Encodes an R-type instruction into a 32-bit machine code format.
  *
- * @param node The AST node representing the instruction.
+ * @param node The AST node representing the current instruction.
  * @return The encoded 32-bit machine instruction.
  */
 uint32_t encodeRType(const ASTNode& node);
