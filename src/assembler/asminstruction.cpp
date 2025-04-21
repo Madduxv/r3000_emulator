@@ -17,7 +17,7 @@ uint32_t ASMInstruction::encode(const ASTNode node, uint32_t address) {
   if (isRType(node)) {
     return encodeRType(node);
   } else if (isIType(node)) {
-    return encodeIType(node);
+    return encodeIType(node, address);
   } else if (isJType(node)) {
     return encodeJType(node);
   } else if (isPseudo(node)) {

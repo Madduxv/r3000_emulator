@@ -111,15 +111,17 @@ CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o: \
  /usr/include/c++/14.2.1/bits/basic_string.tcc \
  /home/madduxsu/programming/cpp/r3000_emulator/include/assembler/symbols.hpp \
  /home/madduxsu/programming/cpp/r3000_emulator/include/assembler/parser.hpp \
+ /home/madduxsu/programming/cpp/r3000_emulator/include/emulator/memory.hpp \
  /usr/include/c++/14.2.1/cstdint \
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
- /usr/include/bits/stdint-least.h /usr/include/c++/14.2.1/map \
- /usr/include/c++/14.2.1/bits/stl_tree.h \
+ /usr/include/bits/stdint-least.h /usr/include/c++/14.2.1/unordered_map \
+ /usr/include/c++/14.2.1/bits/unordered_map.h \
+ /usr/include/c++/14.2.1/bits/hashtable.h \
+ /usr/include/c++/14.2.1/bits/hashtable_policy.h \
  /usr/include/c++/14.2.1/ext/aligned_buffer.h \
+ /usr/include/c++/14.2.1/bits/enable_special_members.h \
  /usr/include/c++/14.2.1/bits/node_handle.h \
- /usr/include/c++/14.2.1/bits/stl_map.h \
- /usr/include/c++/14.2.1/bits/stl_multimap.h \
  /usr/include/c++/14.2.1/bits/erase_if.h /usr/include/c++/14.2.1/iostream \
  /usr/include/c++/14.2.1/ostream /usr/include/c++/14.2.1/ios \
  /usr/include/c++/14.2.1/exception \

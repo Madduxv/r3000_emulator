@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/r3000_emu.dir/link.d"
+  "CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o"
+  "CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o.d"
   "CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o"
   "CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o.d"
   "CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o"

@@ -72,10 +72,24 @@ include CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/codegen:
 .PHONY : CMakeFiles/r3000_emu.dir/codegen
 
+CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
+CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/asminstruction.cpp
+CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o -MF CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/asminstruction.cpp
+
+CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/asminstruction.cpp > CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.i
+
+CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/asminstruction.cpp -o CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.s
+
 CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/assembler.cpp
 CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o -MF CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/assembler.cpp
 
 CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.i: cmake_force
@@ -89,7 +103,7 @@ CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/lexer.cpp
 CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o -MF CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/lexer.cpp
 
 CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/parser.cpp
 CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o -MF CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/parser.cpp
 
 CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/symbols.cpp
 CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o -MF CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/symbols.cpp
 
 CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/r3000_emu.dir/src/assembler/symbols.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/cpu.cpp
 CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o -MF CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/cpu.cpp
 
 CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.i: cmake_force
@@ -145,7 +159,7 @@ CMakeFiles/r3000_emu.dir/src/emulator/cpu.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/emulator.cpp
 CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o -MF CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/emulator.cpp
 
 CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.i: cmake_force
@@ -159,7 +173,7 @@ CMakeFiles/r3000_emu.dir/src/emulator/emulator.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/instructions.cpp
 CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o -MF CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/instructions.cpp
 
 CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/r3000_emu.dir/src/emulator/instructions.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/memory.cpp
 CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o -MF CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/emulator/memory.cpp
 
 CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.i: cmake_force
@@ -187,7 +201,7 @@ CMakeFiles/r3000_emu.dir/src/emulator/memory.cpp.s: cmake_force
 CMakeFiles/r3000_emu.dir/src/main.cpp.o: CMakeFiles/r3000_emu.dir/flags.make
 CMakeFiles/r3000_emu.dir/src/main.cpp.o: /home/madduxsu/programming/cpp/r3000_emulator/src/main.cpp
 CMakeFiles/r3000_emu.dir/src/main.cpp.o: CMakeFiles/r3000_emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/r3000_emu.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/r3000_emu.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/r3000_emu.dir/src/main.cpp.o -MF CMakeFiles/r3000_emu.dir/src/main.cpp.o.d -o CMakeFiles/r3000_emu.dir/src/main.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/main.cpp
 
 CMakeFiles/r3000_emu.dir/src/main.cpp.i: cmake_force
@@ -200,6 +214,7 @@ CMakeFiles/r3000_emu.dir/src/main.cpp.s: cmake_force
 
 # Object files for target r3000_emu
 r3000_emu_OBJECTS = \
+"CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o" \
 "CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o" \
 "CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o" \
 "CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o" \
@@ -213,6 +228,7 @@ r3000_emu_OBJECTS = \
 # External object files for target r3000_emu
 r3000_emu_EXTERNAL_OBJECTS =
 
+r3000_emu: CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o
 r3000_emu: CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o
 r3000_emu: CMakeFiles/r3000_emu.dir/src/assembler/lexer.cpp.o
 r3000_emu: CMakeFiles/r3000_emu.dir/src/assembler/parser.cpp.o
@@ -225,7 +241,7 @@ r3000_emu: CMakeFiles/r3000_emu.dir/src/main.cpp.o
 r3000_emu: CMakeFiles/r3000_emu.dir/build.make
 r3000_emu: CMakeFiles/r3000_emu.dir/compiler_depend.ts
 r3000_emu: CMakeFiles/r3000_emu.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable r3000_emu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/madduxsu/programming/cpp/r3000_emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable r3000_emu"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/r3000_emu.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

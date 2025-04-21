@@ -129,6 +129,30 @@ r3000_emu/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/build
 .PHONY : r3000_emu/fast
 
+src/assembler/asminstruction.o: src/assembler/asminstruction.cpp.o
+.PHONY : src/assembler/asminstruction.o
+
+# target to build an object file
+src/assembler/asminstruction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o
+.PHONY : src/assembler/asminstruction.cpp.o
+
+src/assembler/asminstruction.i: src/assembler/asminstruction.cpp.i
+.PHONY : src/assembler/asminstruction.i
+
+# target to preprocess a source file
+src/assembler/asminstruction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.i
+.PHONY : src/assembler/asminstruction.cpp.i
+
+src/assembler/asminstruction.s: src/assembler/asminstruction.cpp.s
+.PHONY : src/assembler/asminstruction.s
+
+# target to generate assembly for a file
+src/assembler/asminstruction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/r3000_emu.dir/build.make CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.s
+.PHONY : src/assembler/asminstruction.cpp.s
+
 src/assembler/assembler.o: src/assembler/assembler.cpp.o
 .PHONY : src/assembler/assembler.o
 
@@ -354,6 +378,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... r3000_emu"
+	@echo "... src/assembler/asminstruction.o"
+	@echo "... src/assembler/asminstruction.i"
+	@echo "... src/assembler/asminstruction.s"
 	@echo "... src/assembler/assembler.o"
 	@echo "... src/assembler/assembler.i"
 	@echo "... src/assembler/assembler.s"

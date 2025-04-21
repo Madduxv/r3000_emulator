@@ -1,6 +1,12 @@
 [
 {
   "directory": "/home/madduxsu/programming/cpp/r3000_emulator/build",
+  "command": "/usr/bin/c++  -I/home/madduxsu/programming/cpp/r3000_emulator/include  -o CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/asminstruction.cpp",
+  "file": "/home/madduxsu/programming/cpp/r3000_emulator/src/assembler/asminstruction.cpp",
+  "output": "CMakeFiles/r3000_emu.dir/src/assembler/asminstruction.cpp.o"
+},
+{
+  "directory": "/home/madduxsu/programming/cpp/r3000_emulator/build",
   "command": "/usr/bin/c++  -I/home/madduxsu/programming/cpp/r3000_emulator/include  -o CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o -c /home/madduxsu/programming/cpp/r3000_emulator/src/assembler/assembler.cpp",
   "file": "/home/madduxsu/programming/cpp/r3000_emulator/src/assembler/assembler.cpp",
   "output": "CMakeFiles/r3000_emu.dir/src/assembler/assembler.cpp.o"

@@ -23,7 +23,7 @@ std::vector<Token> tokenize(const std::string& source) {
 			continue;
 		}
 
-		if (isnumber(c) || '-' == c) {
+		if (std::isdigit(c) || '-' == c) {
 			word.clear();
 			while (i < source.size() && (isalnum(source[i]))) { // I'll handle casting later
 				word += source[i++];

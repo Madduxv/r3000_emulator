@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <unordered_map>
 #include <vector>
 #include "assembler/symbols.hpp"
 #include "assembler/lexer.hpp"

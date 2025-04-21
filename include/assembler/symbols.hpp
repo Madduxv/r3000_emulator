@@ -4,8 +4,8 @@
 #include "assembler/parser.hpp"
 #include "emulator/memory.hpp"
 #include <cstdint>
-#include <map>
 #include <string>
+#include <unordered_map>
 
 extern std::unordered_map<std::string, uint16_t> r_type;
 extern std::unordered_map<std::string, uint16_t> j_type;

@@ -3,6 +3,7 @@
 #include "emulator/cpu.hpp"
 #include "emulator/instructions.hpp"
 
+#include <cstring>
 #include <iostream>
 #include <string>
 /*#include <thread>*/
