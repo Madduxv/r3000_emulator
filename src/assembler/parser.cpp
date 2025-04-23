@@ -53,6 +53,7 @@ std::vector<ASTNode> parse(std::vector<Token> tokens) {
         tokens[i].type != TokenType::LABEL_DECLARATION && 
         tokens[i].type != TokenType::DIRECTIVE) {
 
+        // We don't really care about the commas or parenthesis
         if (tokens[i].type != TokenType::COMMA && tokens[i].type != TokenType::LPAREN && tokens[i].type != TokenType::RPAREN) {
           node.args.push_back(tokens[i]);
         }

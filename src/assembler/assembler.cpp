@@ -5,6 +5,7 @@
 #include "assembler/symbols.hpp"
 #include "emulator/memory.hpp"
 #include <cstdint>
+#include <ios>
 #include <iostream>
 #include <ostream>
 #include <fstream>
@@ -36,16 +37,19 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
   resolveSymbols(this->AST);
   this->instrAddrPtr = setStart(mem);
 
+  if (this->instrAddrPtr == 0xFFFFFFFF) {
+    std::cout << "ERROR: No start address present" << std::endl;
+    exit(1);
+  }
+
   for (const ASTNode& node : this->AST) {
     if (node.type == TokenType::INSTRUCTION) { 
       this->Instructions.push_back(encoder.encode(node, instrAddrPtr)); 
       this->instrAddrPtr += 4;
     }
   }
-
-  if (this->instrAddrPtr == 0xFFFFFFFF) {
-    std::cout << "ERROR: No start address present" << std::endl;
-    exit(1);
+  for(const auto instr : Instructions) {
+    std::cout << "0x" << std::hex << instr << std::endl;
   }
 
   for (const ASTNode& node : this->AST) {

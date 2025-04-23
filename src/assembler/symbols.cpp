@@ -23,8 +23,9 @@ std::unordered_map<std::string, uint16_t> j_type = {
 std::unordered_map<std::string, uint16_t> i_type = {
   { "beq", 0x04  },  { "bne", 0x05  },  { "blez", 0x06  }, { "bgtz", 0x07  },
   { "addi", 0x08  }, { "addiu", 0x09 }, { "slti", 0x0A  }, { "sltiu", 0x0B  },
-  { "ori", 0x0D  },  { "xori", 0x0E },  { "lui", 0x0F  },  { "lh", 0x21  },
-  { "lw", 0x23  }, { "lbu", 0x24  },  { "sb", 0x28 },    { "sw", 0x2b  },
+  { "andi", 0x0C }, { "ori", 0x0D  },  { "xori", 0x0E },  { "lui", 0x0F  },  
+  { "lh", 0x21  }, { "lw", 0x23  }, { "lbu", 0x24  },  { "sb", 0x28 },    
+  { "sw", 0x2b  },
 };
 
 std::unordered_map<std::string, uint16_t> pseudo = {

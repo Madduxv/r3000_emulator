@@ -62,7 +62,7 @@ uint32_t ASMInstruction::encodeRType(const ASTNode& node) {
   if (node.val == "sll" || node.val == "srl" || node.val == "sra") {
     rd = registers.at(node.args[0].val);
     rt = registers.at(node.args[1].val);
-    shamt = std::stoi(node.args[2].val);
+    shamt = std::stoul(node.args[2].val, nullptr, 0);
     rs = 0; // rs isn't used for shift instructions
   }  else {
     rd = registers.at(node.args[0].val);
@@ -105,19 +105,22 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
   try {
 
     if (node.val == "beq" || node.val == "bne" || node.val == "blez" || node.val == "bgtz") {
-      uint32_t offset = static_cast<uint32_t>(std::stoi(node.args.at(2).val)) - static_cast<uint32_t>(address);
-      imm = static_cast<uint16_t>(offset &0xFFFF);
-      rs = registers.at(node.args.at(1).val);
+      int32_t label_addr = std::stoul(node.args.at(2).val, nullptr, 0);  // This assumes absolute byte address
+      int32_t offset = (label_addr - (address + 4)) >> 2;
+      imm = static_cast<uint16_t>(offset & 0xFFFF);
+      rs = registers.at(node.args.at(0).val);
+      rt = registers.at(node.args.at(1).val);
     } else if (registers.find(node.args.at(1).val) == registers.end()) {
-      imm = std::stoi(node.args.at(1).val);
+      imm = std::stoul(node.args.at(1).val, nullptr, 0);
       rs = registers.at(node.args.at(2).val);
-    } else if ("lw" == node.val) {
-      imm = std::stoi(node.args.at(1).val);
+    } else if ("lw" == node.val || "lui" == node.val) {
+      imm = std::stoul(node.args.at(1).val, nullptr, 0);
       rs = 0;
     } else {
       rs = registers.at(node.args.at(1).val);
-      imm = std::stoi(node.args.at(2).val);
+      imm = std::stoul(node.args.at(2).val, nullptr, 0);
     }
+
   } catch (std::out_of_range) {
     std::cout << "unknown registers for instruction (" << node.val << ")"<< std::endl;
 
@@ -149,7 +152,8 @@ uint32_t ASMInstruction::encodeJType(const ASTNode& node) {
   }
 
   opcode = j_type.at(node.val);
-  uint32_t targetAddr = std::stoul(node.args[0].val); // should be pre-resolved
+  
+  uint32_t targetAddr = std::stoul(node.args[0].val, nullptr, 0); // should be pre-resolved
 
   // word-align and fit to 26 bits (even though I don't support full 26-bit addresses yet)
   addr = (targetAddr >> 2) & 0x03FFFFFF;

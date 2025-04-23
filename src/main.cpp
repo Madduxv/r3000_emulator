@@ -3,8 +3,6 @@
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
 #include <cstdint>
-#include <iostream>
-#include <ostream>
 
 
 int main () {
