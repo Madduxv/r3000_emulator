@@ -9,9 +9,12 @@
 #include <string>
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Encodes an assembly instruction into machine-code.
+ *
+ * @param node      The ASTNode instruction to be encoded
+ * @param address   The address of this instruction
+ *
+ * @return uint32_t The machine-code representation of this instruction
  */
 uint32_t ASMInstruction::encode(const ASTNode node, uint32_t address) {
   if (isRType(node)) {
@@ -27,12 +30,12 @@ uint32_t ASMInstruction::encode(const ASTNode node, uint32_t address) {
     exit(1);
   }
 }
-   
+
 /**
  * @brief Encodes an R-type instruction into a 32-bit machine code format.
  *
- * @param node The AST node representing the current instruction.
- * @return The encoded 32-bit machine instruction.
+ * @param node      The AST node representing the current instruction.
+ * @return uint32_t The encoded 32-bit machine instruction.
  */
 uint32_t ASMInstruction::encodeRType(const ASTNode& node) {
   // R-type
@@ -84,9 +87,10 @@ uint32_t ASMInstruction::encodeRType(const ASTNode& node) {
 }
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Encodes an I-type instruction into a 32-bit machine code format.
+ *
+ * @param node      The AST node representing the current instruction.
+ * @return uint32_t The encoded 32-bit machine instruction.
  */
 uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
   // I-type
@@ -137,9 +141,10 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
 }
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Encodes an J-type instruction into a 32-bit machine code format.
+ *
+ * @param node      The AST node representing the current instruction.
+ * @return uint32_t The encoded 32-bit machine instruction.
  */
 uint32_t ASMInstruction::encodeJType(const ASTNode& node) {
   // J-type

@@ -5,13 +5,25 @@
 
 #include <cstring>
 #include <iostream>
-#include <string>
-/*#include <thread>*/
 
+/**
+ * @brief Gets the starting address (in big endian) from the address 0x4FFC  
+ *        and sets the program counter to that address.
+ *
+ * @param mem The memory object containing the machine code.
+ * @param cpu A reference to the CPU object
+ */
 void startup(Memory& mem, CPU &cpu) {
   // Our reset vector will be at 4FFC for now
   cpu.pc = 0x00000000 + mem.read16(0x4FFC); // Yes, we are using big endian
 }
+
+/**
+ * @brief Runs a machine-code program stored in the "memory" of the emulator.
+ *
+ * @param mem A reference to the memory object containing the machine code.
+ * @param cpu A reference to the CPU object
+ */
 void run(Memory &mem, CPU &cpu) {
   Instruction instr; 
 
@@ -26,8 +38,15 @@ void run(Memory &mem, CPU &cpu) {
   } while (!(mem.read32(cpu.pc) == 0x0000000C && cpu.getRegister(2) == 0x0A));
 }
 
-// I really should have just used the 6502 instruction set
+/**
+ * @brief Executes a given machine-code instruction
+ *
+ * @param instr The instruction to be executed.
+ * @param cpu   A reference to the CPU object
+ * @param mem   A reference to the memory object containing the machine code.
+ */
 void execute(Instruction &instr, CPU &cpu, Memory &mem) {
+// I really should have just used the 6502 instruction set
   cpu.pc = ( cpu.pc + 4 ) & 0xFFFF;
 
   // R-type

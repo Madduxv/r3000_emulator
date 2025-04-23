@@ -9,6 +9,11 @@
 #include <vector>
 
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 uint32_t testEncoding(const std::string input) {
   ASMInstruction encoder;
   std::vector<Token> tokens = tokenize(input);
@@ -26,6 +31,11 @@ uint32_t testEncoding(const std::string input) {
   return encoded;
 }
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 int main () {
   uint32_t expected;
   uint32_t encoded;

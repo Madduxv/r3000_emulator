@@ -4,6 +4,12 @@
 #include <ostream>
 #include "emulator/instructions.hpp"
 
+/**
+ * @brief Decodes a machine-code instruction and extracts the different sections of the instruction
+ *
+ * @param instr         The instruction to be decoded
+ * @return Instruction  The decoded instruction
+ */
 	Instruction Instruction::decode(uint32_t instr) {
 		Instruction i;
 		i.opcode = (instr >> 26) & 0x3F;
@@ -23,6 +29,11 @@
 		return i;
 	}
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 	void Instruction::print() {
 		Instruction i;
 		std::cout << "Opcode: 0x" << std::hex << (int)i.opcode << std::endl;

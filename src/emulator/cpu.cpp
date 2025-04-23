@@ -21,20 +21,40 @@
 	 *
 	 */
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 CPU::CPU() : pc(0), hi(0), lo(0) {
 	memset(CPU::registers, 0, sizeof(CPU::registers));
 	CPU::registers[29] = CPU::registers[30] = 0x9FFE;
 	// Beginning of the stack
 }
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 uint32_t CPU::getRegister(int index) {
 	return CPU::CPU::registers[index & 31];
 }
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 void CPU::setRegister(int index, uint32_t value) {
 	if (index != 0) {registers[index & 31] = value;}
 }
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 void CPU::print() {
 	std::cout << "Zero: " << registers[0] << std::endl;
 	std::cout << "AT:   " << registers[1] << std::endl;

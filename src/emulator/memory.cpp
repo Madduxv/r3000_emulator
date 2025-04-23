@@ -19,6 +19,11 @@
 
 	Memory::Memory() : mem(MEM_SIZE, 0) {}
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 	uint8_t Memory::read8(uint32_t address) {
 		return mem[address & (MEM_SIZE - 1)];
 	}
@@ -31,6 +36,11 @@
 		return (Memory::read16(address) << 16) | Memory::read16((address + 2) & (MEM_SIZE - 1));
 	}
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 	void Memory::write8(uint32_t address, uint8_t value) {
 		mem[address & (MEM_SIZE - 1)] = value;
 	}

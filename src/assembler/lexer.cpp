@@ -2,14 +2,27 @@
 #include "assembler/symbols.hpp"
 #include <iostream>
 
+/**
+ * @brief Turns a Token into a string for debug printing
+ *
+ * @param out             The output stream to write the string to.
+ * @param token           The Token to be converted.
+ * @return std::ostream&  The output stream with the string appended.
+ */
 std::ostream& operator<<(std::ostream& out, const Token& token) {
     out << "Token(Type: " << static_cast<int>(token.type)
        << ", Value: " << token.val << ")";
     return out;
 }
 
-// I will look back at this and think that I was an idiot
+/**
+ * @brief Converts a string into a sequence of relevant tokens.
+ *
+ * @param source              The raw input as a string.
+ * @return std::vector<Token> A vector of tokens.
+ */
 std::vector<Token> tokenize(const std::string& source) {
+// I will look back at this and think that I was an idiot
 	std::vector<Token> tokens;
 	std::string word;
 	int line = 1;
