@@ -3,8 +3,10 @@
 #include "emulator/cpu.hpp"
 #include "emulator/instructions.hpp"
 
+#include <cstring>
 #include <iostream>
-#include <thread>
+#include <string>
+/*#include <thread>*/
 
 void startup(Memory& mem, CPU &cpu) {
   // Our reset vector will be at 4FFC for now
@@ -19,7 +21,7 @@ void run(Memory &mem, CPU &cpu) {
     /*std::cout << std::hex << cpu.getRegister(0xB) << ", ";*/
     /*std::cout << std::hex << cpu.getRegister(0xC) << std::endl;*/
     execute(instr, cpu, mem);
-    std::this_thread::sleep_for(std::chrono::milliseconds(25));
+    /*std::this_thread::sleep_for(std::chrono::milliseconds(25));*/
     /*} while (true);*/
   } while (!(mem.read32(cpu.pc) == 0x0000000C && cpu.getRegister(2) == 0x0A));
 }
@@ -57,10 +59,20 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
             break;
           } 
 
-          case 4: // print_string
-            for (uint32_t i = 0; i < cpu.getRegister(6); i++) {
+          case 4: { // print_string
+            int i = 0;
+            char c;
+            while ((c = char(mem.read8(cpu.getRegister(5)) + i) && c != '\0')) {
               std::cout << char(mem.read8(cpu.getRegister(5) + i));
+              i++;
             }
+            break;
+          }
+
+          case 5: // read_int
+            int inputVal;
+            std::cin >> inputVal;
+            cpu.setRegister(2, inputVal);
             break;
 
           case 10: // Exit

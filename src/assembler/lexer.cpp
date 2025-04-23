@@ -3,7 +3,7 @@
 #include <iostream>
 
 std::ostream& operator<<(std::ostream& out, const Token& token) {
-    out << "Token(Type: " << static_cast<int>(token.token)
+    out << "Token(Type: " << static_cast<int>(token.type)
        << ", Value: " << token.val << ")";
     return out;
 }
@@ -23,7 +23,7 @@ std::vector<Token> tokenize(const std::string& source) {
 			continue;
 		}
 
-		if (isnumber(c) || '-' == c) {
+		if (std::isdigit(c) || '-' == c) {
 			word.clear();
 			while (i < source.size() && (isalnum(source[i]))) { // I'll handle casting later
 				word += source[i++];

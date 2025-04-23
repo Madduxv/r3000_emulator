@@ -20,7 +20,7 @@ enum class TokenType {
 };
 
 struct Token {
-    TokenType token;
+    TokenType type;
     std::string val;
     int line;
 };
