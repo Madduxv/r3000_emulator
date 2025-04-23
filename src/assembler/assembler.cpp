@@ -12,6 +12,11 @@
 #include <vector>
 #include <string>
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 std::string readFile(const std::string& filename) {
   std::ifstream myfile(filename);
   if (!myfile.is_open()) {
@@ -28,6 +33,11 @@ std::string readFile(const std::string& filename) {
   return file;
 }
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x5000) {
   ASMInstruction encoder;
   std::string file = readFile("testFile.s");
@@ -59,6 +69,11 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
 }
 
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 uint32_t Assembler::setStart(Memory& mem) {
   uint32_t startAddr;
   for(const ASTNode& node : this->AST) {
@@ -72,5 +87,10 @@ uint32_t Assembler::setStart(Memory& mem) {
 }
 
 
+/**
+ * @brief 
+ * @param 
+ * @return 
+ */
 void Assembler::assemble(Memory& mem) {
 }

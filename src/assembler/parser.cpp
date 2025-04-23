@@ -5,11 +5,18 @@
 #include <vector>
 #include <iostream>
 
+/**
+ * @brief Turns an AST Token into a string for debug printing
+ *
+ * @param out             The output stream to write the string to.
+ * @param token           The AST node to be converted.
+ * @return std::ostream&  The output stream with the string appended.
+ */
 std::ostream& operator<<(std::ostream& out, const ASTNode& node) {
     out << "ASTNode(Type: " << static_cast<int>(node.type)
         << ", Value: " << node.val
         << ", Args: [";
-    
+
     for (size_t i = 0; i < node.args.size(); i++) {
         out << node.args[i]; // I think I already overloaded << for Token
         if (i != node.args.size() - 1) {
@@ -22,6 +29,12 @@ std::ostream& operator<<(std::ostream& out, const ASTNode& node) {
 }
 
 
+/**
+ * @brief Combines associated tokens to create an abstract syntax tree.
+ *
+ * @param tokens                The list of tokens created from the assembly file.
+ * @return std::vector<ASTNode> The new abstract syntax tree
+ */
 std::vector<ASTNode> parse(std::vector<Token> tokens) {
   std::vector<ASTNode> AST;
 

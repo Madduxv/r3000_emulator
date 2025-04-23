@@ -53,6 +53,12 @@ std::unordered_map<std::string, uint16_t> registers = {
 
 std::unordered_map<std::string, uint32_t> labels;
 
+/**
+ * @brief Converts label declarations and static variables in the AST into memory addresses.
+ *
+ * @param ast The abstract syntax tree with the parsed assembly file.
+ * @param mem A reference to the Memory object where static variables will be stored.
+ */
 void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
   int idx = 0;
   int globalAddrPtr = 0x5000;
@@ -114,6 +120,15 @@ void getSymbols(const std::vector<ASTNode>& ast, Memory& mem) {
 
 }
 
+/**
+ * @brief Writes a byte of ascii data to the Memory object.
+ *
+ * @param ast     The abstract syntax tree with the parsed assembly file.
+ * @param mem     A reference to the Memory object where static variables will be stored.
+ * @param addrPtr The address to write the byte to.
+ * @param i       The index of this ASTNode in the abstract syntax tree
+ * @param j       The index of this byte in the ascii variable
+ */
 void allocateAscii(const std::vector<ASTNode>& ast, Memory& mem, int& addrPtr, const int i, int& j) {
 
   if ('\\' == ast.at(i).args.at(0).val.at(j)) {
@@ -132,6 +147,11 @@ void allocateAscii(const std::vector<ASTNode>& ast, Memory& mem, int& addrPtr, c
 }
 
 
+/**
+ * @brief Resolves the labels in the abstract syntax tree into their associated addresses
+ *
+ * @param ast The abstract syntax tree with the labels and static variables having associated addresses
+ */
 void resolveSymbols(std::vector<ASTNode>& ast) {
   for (ASTNode& node : ast) {
     for (Token& arg : node.args) {
