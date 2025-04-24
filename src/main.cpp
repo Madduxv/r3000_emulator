@@ -3,6 +3,7 @@
 #include "emulator/cpu.hpp"
 #include "emulator/emulator.hpp"
 #include <cstdint>
+#include <iostream>
 
 
 int main () {
@@ -77,6 +78,8 @@ int main () {
   Memory testMem;
   Assembler assembler("testFile.s", testMem);
   assembler.assemble(testMem);
+  // TODO: Read the different data segments
+  testMem.hexdump();
 	/*cpu.print();*/
 
 	return 0;

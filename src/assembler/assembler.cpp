@@ -3,6 +3,7 @@
 #include "assembler/lexer.hpp"
 #include "assembler/parser.hpp"
 #include "assembler/symbols.hpp"
+#include "emulator/instructions.hpp"
 #include "emulator/memory.hpp"
 #include <cstdint>
 #include <ios>
@@ -13,9 +14,10 @@
 #include <string>
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Reads a file and returns its contents as a string
+ *
+ * @param filename      The path to a file.
+ * @return std::string  The contents of the file as a string.
  */
 std::string readFile(const std::string& filename) {
   std::ifstream myfile(filename);
@@ -34,12 +36,13 @@ std::string readFile(const std::string& filename) {
 }
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Creates a new Assembler object with its fields defined.
+ *
+ * @param fileName  The path to the assembly file as a string.
+ * @param mem       A reference to the Memory object that will hold the machine-code for the program.
+ * @return          A new Assembler object.
  */
 Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x5000) {
-  ASMInstruction encoder;
   std::string file = readFile("testFile.s");
   std::vector<Token> tokenizedFile = tokenize(file);
   this->AST = parse(tokenizedFile);
@@ -51,16 +54,7 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
     std::cout << "ERROR: No start address present" << std::endl;
     exit(1);
   }
-
-  for (const ASTNode& node : this->AST) {
-    if (node.type == TokenType::INSTRUCTION) { 
-      this->Instructions.push_back(encoder.encode(node, instrAddrPtr)); 
-      this->instrAddrPtr += 4;
-    }
-  }
-  for(const auto instr : Instructions) {
-    std::cout << "0x" << std::hex << instr << std::endl;
-  }
+  std::cout << "Start address: 0x" << std::hex << this->instrAddrPtr << std::endl;
 
   for (const ASTNode& node : this->AST) {
     std::cout << node << '\n';
@@ -70,9 +64,10 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
 
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Gets the start address for the assembly program.
+ *
+ * @param mem       A reference to the memory object that will house the machine code.
+ * @return uint32_t The address for the start of the program.
  */
 uint32_t Assembler::setStart(Memory& mem) {
   uint32_t startAddr;
@@ -88,9 +83,18 @@ uint32_t Assembler::setStart(Memory& mem) {
 
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Turns the abstract syntax tree into machine code and writes it to the memory object.
+ *
+ * @param mem The memory object that will contain the machine-code
  */
 void Assembler::assemble(Memory& mem) {
+  ASMInstruction encoder;
+  for (const ASTNode& node : this->AST) {
+    if (node.type == TokenType::INSTRUCTION) { 
+      uint32_t encoded = encoder.encode(node, instrAddrPtr);
+      this->Instructions.push_back(encoded); 
+      mem.write32(this->instrAddrPtr, encoded);
+      this->instrAddrPtr += 4;
+    }
+  }
 }

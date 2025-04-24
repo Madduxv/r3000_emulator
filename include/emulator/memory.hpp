@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstdint>
 
-	/* Memory regions:
+/* Memory regions:
  * 0x0000 - 0x4FFF - ROM/Program
  * 0x4FFC - 0x4FFD - Reset Vector 
  * 0x5000 - 0x6FFF - Variables
@@ -16,17 +16,20 @@
 
 class Memory {
 public:
-    static const uint32_t MEM_SIZE = 0x10000;
-    Memory();
-    uint8_t read8(uint32_t address);
-    uint16_t read16(uint32_t address);
-    uint32_t read32(uint32_t address);
-    void write8(uint32_t address, uint8_t value);
-    void write16(uint32_t address, uint16_t value);
-    void write32(uint32_t address, uint32_t value);
+  static const uint32_t MEM_SIZE = 0x10000;
+  Memory();
+  uint8_t read8(uint32_t address);
+  uint16_t read16(uint32_t address);
+  uint32_t read32(uint32_t address);
+  void write8(uint32_t address, uint8_t value);
+  void write16(uint32_t address, uint16_t value);
+  void write32(uint32_t address, uint32_t value);
+  void hexdump();
 
 private:
-    std::vector<uint8_t> mem;
+  std::vector<uint8_t> mem;
+  void printSegment32(uint32_t startAddr, uint32_t endAddr);
+  void printSegment8(uint32_t startAddr, uint32_t endAddr);
 };
 
 #endif
