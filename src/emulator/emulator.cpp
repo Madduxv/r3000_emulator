@@ -2,8 +2,8 @@
 #include "emulator/memory.hpp"
 #include "emulator/cpu.hpp"
 #include "emulator/instructions.hpp"
+#include <cstdlib>
 #include <cstring>
-#include <ios>
 #include <iostream>
 #include <ostream>
 
@@ -92,6 +92,17 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
             std::cin >> inputVal;
             cpu.setRegister(2, inputVal);
             break;
+
+          case 9: { // sbrk
+            cpu.setRegister(2, mem.heapPtr);
+            mem.heapPtr +=  cpu.getRegister(4);
+
+            if (mem.heapPtr > 0x9FFF || mem.heapPtr < 0x7000) {
+              std::cout << "Segmentation fault (Heap out of bounds)" << std::endl;
+              exit(1);
+            }
+            break;
+          }
 
           case 10: // Exit
             std::exit(0);
