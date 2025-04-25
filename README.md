@@ -3,11 +3,12 @@
 ### Usage
 To compile, run:
 ```
+cmake .
 make
 ```
 Then, you can run it with: 
 ```
-./r3000_emu
+./r3000_emu <filename>
 ```
 
 ### Current memory locations:
