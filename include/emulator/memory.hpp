@@ -14,9 +14,10 @@
  * 0xF000 - 0xFFFF - Unused for now
  */
 
-class Memory {
+struct Memory {
 public:
   static const uint32_t MEM_SIZE = 0x10000;
+  uint32_t heapPtr = 0x7000;
   Memory();
   uint8_t read8(uint32_t address);
   uint16_t read16(uint32_t address);
