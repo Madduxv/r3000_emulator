@@ -9,7 +9,7 @@
  * @brief Turns an AST Token into a string for debug printing
  *
  * @param out             The output stream to write the string to.
- * @param token           The AST node to be converted.
+ * @param node            The AST node to be converted.
  * @return std::ostream&  The output stream with the string appended.
  */
 std::ostream& operator<<(std::ostream& out, const ASTNode& node) {
