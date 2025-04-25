@@ -14,6 +14,7 @@ struct Instruction {
 	uint16_t imm;
 	uint32_t addr;
  
+public:
 	static Instruction decode(uint32_t instr);
 	void print();
 };
