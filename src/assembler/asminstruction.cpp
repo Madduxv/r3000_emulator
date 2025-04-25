@@ -97,7 +97,7 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
   /*| OPCODE |  RS   |  RT   | Immediate | */
   /*| 6-bits | 5-bit | 5-bit | 16-bits   | */
 
-  if ("lw" != node.val && node.args.size() < 3) {
+  if ("lw" != node.val && "blez" != node.val && "bgtz" != node.val && node.args.size() < 3) {
     std::cout << "Instruction is missing arguments: " << node.val << std::endl;
     return 0;
   }
@@ -108,26 +108,35 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
   // Ex: lw $t0, 4($t2), args[1] will be 4 and not a register
   try {
 
-    if (node.val == "beq" || node.val == "bne" || node.val == "blez" || node.val == "bgtz") {
+    if ("beq" == node.val || "bne" == node.val) {
       int32_t label_addr = std::stoul(node.args.at(2).val, nullptr, 0);  // This assumes absolute byte address
       int32_t offset = (label_addr - (address + 4)) >> 2;
       imm = static_cast<uint16_t>(offset & 0xFFFF);
       rs = registers.at(node.args.at(0).val);
       rt = registers.at(node.args.at(1).val);
+
+    } else if ("blez" == node.val || "bgtz" == node.val) {
+      int32_t label_addr = std::stoul(node.args.at(1).val, nullptr, 0);
+      int32_t offset = (label_addr - (address + 4)) >> 2;
+      imm = static_cast<uint16_t>(offset & 0xFFFF);
+      rs = registers.at(node.args.at(0).val);
+      rt = 0;
+
     } else if (registers.find(node.args.at(1).val) == registers.end()) {
       imm = std::stoul(node.args.at(1).val, nullptr, 0);
       rs = registers.at(node.args.at(2).val);
+
     } else if ("lw" == node.val || "lui" == node.val) {
       imm = std::stoul(node.args.at(1).val, nullptr, 0);
       rs = 0;
+
     } else {
       rs = registers.at(node.args.at(1).val);
       imm = std::stoul(node.args.at(2).val, nullptr, 0);
     }
 
   } catch (std::out_of_range) {
-    std::cout << "unknown registers for instruction (" << node.val << ")"<< std::endl;
-
+    std::cout << "Unknown registers for instruction (" << node << ")"<< std::endl;
   }
 
   uint32_t instruction = 0;

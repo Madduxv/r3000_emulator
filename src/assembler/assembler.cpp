@@ -54,11 +54,6 @@ Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x500
     std::cout << "ERROR: No start address present" << std::endl;
     exit(1);
   }
-  std::cout << "Start address: 0x" << std::hex << this->instrAddrPtr << std::endl;
-
-  for (const ASTNode& node : this->AST) {
-    std::cout << node << '\n';
-  }
 
 }
 
@@ -96,5 +91,15 @@ void Assembler::assemble(Memory& mem) {
       mem.write32(this->instrAddrPtr, encoded);
       this->instrAddrPtr += 4;
     }
+  }
+}
+
+/**
+ * @brief Prints the contents of the abstract syntax tree created from the given assembly program.
+ */
+void Assembler::print() {
+  std::cout << "Start address: 0x" << std::hex << this->instrAddrPtr << std::endl;
+  for (const ASTNode& node : this->AST) {
+    std::cout << node << '\n';
   }
 }

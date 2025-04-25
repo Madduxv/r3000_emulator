@@ -22,38 +22,40 @@
 	 */
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Creates a new CPU object and initializes all of its registers.
+ *
+ * The default constructor for the CPU struct sets all of the 
+ * registers to 0, except the frame pointer, which gets set to 
+ * the address 0xBFFF, which is the start of the stack.
  */
 CPU::CPU() : pc(0), hi(0), lo(0) {
 	memset(CPU::registers, 0, sizeof(CPU::registers));
-	CPU::registers[29] = CPU::registers[30] = 0x9FFE;
-	// Beginning of the stack
+	CPU::registers[29] = CPU::registers[30] = 0xBFFF; 
+	// fp to the beginning of the stack
 }
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Gets the value in the given register.
+ *
+ * @param index     The register to retrieve the value of.
+ * @return uint32_t The value in the given register.
  */
 uint32_t CPU::getRegister(int index) {
 	return CPU::CPU::registers[index & 31];
 }
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Sets the given register to the given value.
+ *
+ * @param index The index of the register to set to the given value.
+ * @param value The value to set the register to.
  */
 void CPU::setRegister(int index, uint32_t value) {
 	if (index != 0) {registers[index & 31] = value;}
 }
 
 /**
- * @brief 
- * @param 
- * @return 
+ * @brief Prints the values in each register.
  */
 void CPU::print() {
 	std::cout << "Zero: " << registers[0] << std::endl;
