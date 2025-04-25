@@ -2,9 +2,10 @@
 #include "emulator/memory.hpp"
 #include "emulator/cpu.hpp"
 #include "emulator/instructions.hpp"
-
 #include <cstring>
+#include <ios>
 #include <iostream>
+#include <ostream>
 
 /**
  * @brief Gets the starting address (in big endian) from the address 0x4FFC  
@@ -29,12 +30,9 @@ void run(Memory &mem, CPU &cpu) {
 
   do {
     instr = Instruction::decode(mem.read32(cpu.pc));
+    /*std::cout << "Pc: 0x" << std::hex << cpu.pc << " Instr: 0x" << std::hex << mem.read32(cpu.pc) << std::endl;*/
     /*instr.print();*/
-    /*std::cout << std::hex << cpu.getRegister(0xB) << ", ";*/
-    /*std::cout << std::hex << cpu.getRegister(0xC) << std::endl;*/
     execute(instr, cpu, mem);
-    /*std::this_thread::sleep_for(std::chrono::milliseconds(25));*/
-    /*} while (true);*/
   } while (!(mem.read32(cpu.pc) == 0x0000000C && cpu.getRegister(2) == 0x0A));
 }
 
@@ -81,8 +79,9 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
           case 4: { // print_string
             int i = 0;
             char c;
-            while ((c = char(mem.read8(cpu.getRegister(5)) + i) && c != '\0')) {
-              std::cout << char(mem.read8(cpu.getRegister(5) + i));
+            uint32_t addr = cpu.getRegister(5);
+            while ((c = char(mem.read8(addr + i))) != '\0') {
+              std::cout << c;
               i++;
             }
             break;

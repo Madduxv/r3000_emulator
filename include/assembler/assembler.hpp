@@ -19,6 +19,7 @@ struct Assembler {
 public:
   Assembler(const std::string& fileName, Memory& mem);
   void assemble(Memory& mem);
+  void print();
 };
 
 std::string readFile(const std::string& filename);
