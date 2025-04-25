@@ -7,6 +7,7 @@
 #include <ostream>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 /**
  * @brief Encodes an assembly instruction into machine-code.
@@ -23,8 +24,6 @@ uint32_t ASMInstruction::encode(const ASTNode node, uint32_t address) {
     return encodeIType(node, address);
   } else if (isJType(node)) {
     return encodeJType(node);
-  } else if (isPseudo(node)) {
-    return encodePseudo(node);
   } else {
     std::cout << "ERROR: Unknown Instruction (" << node.val << ")" << std::endl;
     exit(1);

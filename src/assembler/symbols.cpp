@@ -6,8 +6,6 @@
 #include "assembler/symbols.hpp"
 #include "assembler/lexer.hpp"
 
-// TODO: Handle pseudo instructions
-
 std::unordered_map<std::string, uint16_t> r_type = {
   {"syscall", 0x0c}, { "sll", 0x00  },  { "srl", 0x02  },  { "sra", 0x03  },
   { "jr", 0x08  },   { "jalr", 0x09  }, { "mult", 0x18  }, { "multu", 0x19  },
@@ -29,7 +27,7 @@ std::unordered_map<std::string, uint16_t> i_type = {
 };
 
 std::unordered_map<std::string, uint16_t> pseudo = {
-  { "li", 0x02  },
+  { "li", 0x00  }, {"la", 0x00}, {"move", 0x00}, {"nop", 0x00},
 };
 // I probably should have just used the number after the $
 std::unordered_map<std::string, uint16_t> registers = {
