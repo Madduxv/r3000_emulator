@@ -112,13 +112,13 @@ $(function(){initNavTree('assembler_8cpp.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="lexer_8hpp_source.html">assembler/lexer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="parser_8hpp_source.html">assembler/parser.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="symbols_8hpp_source.html">assembler/symbols.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="instructions_8hpp_source.html">emulator/instructions.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="memory_8hpp_source.html">emulator/memory.hpp</a>&quot;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
-<code>#include &lt;ios&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;ostream&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div><table class="memberdecls">
@@ -127,8 +127,37 @@ Functions</h2></td></tr>
 <tr class="memitem:acfcebfe09e685029b624574ee06f698c" id="r_acfcebfe09e685029b624574ee06f698c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfcebfe09e685029b624574ee06f698c">readFile</a> (const std::string &amp;filename)</td></tr>
 <tr class="memdesc:acfcebfe09e685029b624574ee06f698c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a file and returns its contents as a string.  <br /></td></tr>
 <tr class="separator:acfcebfe09e685029b624574ee06f698c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85498665577389206a0c26cedb8fd624" id="r_a85498665577389206a0c26cedb8fd624"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85498665577389206a0c26cedb8fd624">isPseudo</a> (const <a class="el" href="structASTNode.html">ASTNode</a> node)</td></tr>
+<tr class="memdesc:a85498665577389206a0c26cedb8fd624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an instruction is a pseudo-instruction.  <br /></td></tr>
+<tr class="separator:a85498665577389206a0c26cedb8fd624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a85498665577389206a0c26cedb8fd624" name="a85498665577389206a0c26cedb8fd624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85498665577389206a0c26cedb8fd624">&#9670;&#160;</a></span>isPseudo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isPseudo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structASTNode.html">ASTNode</a></td>          <td class="paramname"><span class="paramname"><em>node</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an instruction is a pseudo-instruction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>A reference to the node to be checked. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if the instruction is a pseudo-instruction and false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="acfcebfe09e685029b624574ee06f698c" name="acfcebfe09e685029b624574ee06f698c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acfcebfe09e685029b624574ee06f698c">&#9670;&#160;</a></span>readFile()</h2>
 

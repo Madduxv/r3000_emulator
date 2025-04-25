@@ -53,7 +53,8 @@ std::vector<Token> tokenize(const std::string& source) {
 			i--; // was skipping characters
 
 			// I'll handle pseudo-instructions later
-			if (r_type.find(word) != r_type.end() || i_type.find(word) != i_type.end() || j_type.find(word) != j_type.end()) {
+			if (r_type.find(word) != r_type.end() || i_type.find(word) != i_type.end() || 
+          j_type.find(word) != j_type.end() || pseudo.find(word) != pseudo.end()) {
 				tokens.push_back({TokenType::INSTRUCTION, word, line});
 				continue;
 			} else {

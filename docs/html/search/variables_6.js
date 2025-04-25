@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mem_0',['mem',['../classMemory.html#a301f9bff3b14829493a832ff20ddecd7',1,'Memory::mem'],['../memory_8cpp.html#aca9be8ab04078d8cf5a59992b68ddfd8',1,'mem:&#160;memory.cpp']]],
-  ['mem_5fsize_1',['MEM_SIZE',['../classMemory.html#acc6ae0244998434b57dc240b890c5a38',1,'Memory::MEM_SIZE'],['../memory_8cpp.html#a8635598dc42e1c010f2abeeb69dbed24',1,'MEM_SIZE:&#160;memory.cpp']]]
+  ['labels_0',['labels',['../symbols_8cpp.html#a990c9cc1bfa0654b38b277d0d07d3b84',1,'labels:&#160;symbols.cpp'],['../symbols_8hpp.html#a990c9cc1bfa0654b38b277d0d07d3b84',1,'labels:&#160;symbols.cpp']]],
+  ['line_1',['line',['../structToken.html#a4b96c2a31d7c374fd2bd1986794f80dd',1,'Token']]],
+  ['lo_2',['lo',['../structCPU.html#afde033adb5b1d2e80ddb3764ce8dea02',1,'CPU']]]
 ];
