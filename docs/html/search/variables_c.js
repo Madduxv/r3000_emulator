@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['val_0',['val',['../structToken.html#a69b28a8c59694d7cef5b947bc7ffb423',1,'Token::val'],['../structASTNode.html#a9a9007a6ffd61b2d7d8dd4ac1945dcd0',1,'ASTNode::val']]],
-  ['varaddrptr_1',['varAddrPtr',['../structAssembler.html#a12946abb0601791c6178a6768c599b18',1,'Assembler']]]
+  ['type_0',['type',['../structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a',1,'Token::type'],['../structASTNode.html#ab8b61c0558114b2d78ccea813c8cfcd6',1,'ASTNode::type']]]
 ];

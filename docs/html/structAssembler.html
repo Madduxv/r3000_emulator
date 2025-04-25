@@ -117,6 +117,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa981a3a49149ebd677475a7318cf5da8" id="r_aa981a3a49149ebd677475a7318cf5da8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa981a3a49149ebd677475a7318cf5da8">setStart</a> (<a class="el" href="classMemory.html">Memory</a> &amp;<a class="el" href="memory_8cpp.html#aca9be8ab04078d8cf5a59992b68ddfd8">mem</a>)</td></tr>
 <tr class="memdesc:aa981a3a49149ebd677475a7318cf5da8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the start address for the assembly program.  <br /></td></tr>
 <tr class="separator:aa981a3a49149ebd677475a7318cf5da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af33f46a2c0ff4e1f66af9a217c0b4f3e" id="r_af33f46a2c0ff4e1f66af9a217c0b4f3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af33f46a2c0ff4e1f66af9a217c0b4f3e">encodePseudo</a> (const <a class="el" href="structASTNode.html">ASTNode</a> node, <a class="el" href="classMemory.html">Memory</a> &amp;<a class="el" href="memory_8cpp.html#aca9be8ab04078d8cf5a59992b68ddfd8">mem</a>)</td></tr>
+<tr class="memdesc:af33f46a2c0ff4e1f66af9a217c0b4f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expands a pseudo-instruction into its real counterparts.  <br /></td></tr>
+<tr class="separator:af33f46a2c0ff4e1f66af9a217c0b4f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab74c6322d8ec7939a8d55437a74c6e00" id="r_ab74c6322d8ec7939a8d55437a74c6e00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab74c6322d8ec7939a8d55437a74c6e00">encodeNewNodes</a> (std::string str, <a class="el" href="classMemory.html">Memory</a> &amp;<a class="el" href="memory_8cpp.html#aca9be8ab04078d8cf5a59992b68ddfd8">mem</a>)</td></tr>
+<tr class="memdesc:ab74c6322d8ec7939a8d55437a74c6e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encodes a new instruction "on the fly" into machine code.  <br /></td></tr>
+<tr class="separator:ab74c6322d8ec7939a8d55437a74c6e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a118121c9e08bc2cf1ad65f9aae235095" id="r_a118121c9e08bc2cf1ad65f9aae235095"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a118121c9e08bc2cf1ad65f9aae235095">Assembler</a> (const std::string &amp;fileName, <a class="el" href="classMemory.html">Memory</a> &amp;<a class="el" href="memory_8cpp.html#aca9be8ab04078d8cf5a59992b68ddfd8">mem</a>)</td></tr>
 <tr class="memdesc:a118121c9e08bc2cf1ad65f9aae235095"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="structAssembler.html">Assembler</a> object with its fields defined.  <br /></td></tr>
 <tr class="separator:a118121c9e08bc2cf1ad65f9aae235095"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +143,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a12946abb0601791c6178a6768c599b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4620fd755bb0c6256f0664f5d19ff402" id="r_a4620fd755bb0c6256f0664f5d19ff402"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4620fd755bb0c6256f0664f5d19ff402">instrAddrPtr</a></td></tr>
 <tr class="separator:a4620fd755bb0c6256f0664f5d19ff402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2b41617719c4d1e093da277dd3f3f44" id="r_ac2b41617719c4d1e093da277dd3f3f44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASMInstruction.html">ASMInstruction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2b41617719c4d1e093da277dd3f3f44">encoder</a></td></tr>
+<tr class="separator:ac2b41617719c4d1e093da277dd3f3f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a118121c9e08bc2cf1ad65f9aae235095" name="a118121c9e08bc2cf1ad65f9aae235095"></a>
@@ -190,6 +198,66 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mem</td><td>The memory object that will contain the machine-code </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab74c6322d8ec7939a8d55437a74c6e00" name="ab74c6322d8ec7939a8d55437a74c6e00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab74c6322d8ec7939a8d55437a74c6e00">&#9670;&#160;</a></span>encodeNewNodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Assembler::encodeNewNodes </td>
+          <td>(</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMemory.html">Memory</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mem</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Encodes a new instruction "on the fly" into machine code. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The new instruction to be encoded </td></tr>
+    <tr><td class="paramname">mem</td><td>A reference to the <a class="el" href="classMemory.html">Memory</a> object that will store the machine-code. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af33f46a2c0ff4e1f66af9a217c0b4f3e" name="af33f46a2c0ff4e1f66af9a217c0b4f3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af33f46a2c0ff4e1f66af9a217c0b4f3e">&#9670;&#160;</a></span>encodePseudo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Assembler::encodePseudo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structASTNode.html">ASTNode</a></td>          <td class="paramname"><span class="paramname"><em>node</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMemory.html">Memory</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mem</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Expands a pseudo-instruction into its real counterparts. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>A reference to the node to be converted. </td></tr>
+    <tr><td class="paramname">mem</td><td>A reference to the <a class="el" href="classMemory.html">Memory</a> object that will store the machine-code. </td></tr>
   </table>
   </dd>
 </dl>
@@ -250,6 +318,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt;<a class="el" href="structASTNode.html">ASTNode</a>&gt; Assembler::AST</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2b41617719c4d1e093da277dd3f3f44" name="ac2b41617719c4d1e093da277dd3f3f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2b41617719c4d1e093da277dd3f3f44">&#9670;&#160;</a></span>encoder</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structASMInstruction.html">ASMInstruction</a> Assembler::encoder</td>
         </tr>
       </table>
 </div><div class="memdoc">

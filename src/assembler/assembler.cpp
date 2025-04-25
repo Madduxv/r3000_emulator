@@ -121,7 +121,7 @@ bool isPseudo(const ASTNode node) {
  * @brief Expands a pseudo-instruction into its real counterparts.
  *
  * @param node      A reference to the node to be converted.
- * @param encoder   The ASMInstruction object to encode the new instructions.
+ * @param mem       A reference to the Memory object that will store the machine-code.
  */
 void Assembler::encodePseudo(const ASTNode node, Memory& mem) {
 
@@ -186,6 +186,14 @@ void Assembler::encodePseudo(const ASTNode node, Memory& mem) {
     throw std::runtime_error("Unknown pseudo-instruction: " + node.val);
   }
 }
+
+
+/**
+ * @brief Encodes a new instruction "on the fly" into machine code
+ *
+ * @param str       The new instruction to be encoded
+ * @param mem       A reference to the Memory object that will store the machine-code.
+ */
 void Assembler::encodeNewNodes(std::string str, Memory& mem) {
   std::vector<Token> tokens = tokenize(str);
   ASTNode newNode = parse(tokens).at(0);

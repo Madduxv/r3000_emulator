@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hi_0',['hi',['../structCPU.html#a3b9b71aeece8cb5ed64caad8e6706007',1,'CPU']]]
+  ['funct_0',['funct',['../structASMInstruction.html#ac0ad18054fdbe5531d8c41b02516eb33',1,'ASMInstruction::funct'],['../structInstruction.html#a64ead99e5696a495965b71be3504e5de',1,'Instruction::funct']]]
 ];

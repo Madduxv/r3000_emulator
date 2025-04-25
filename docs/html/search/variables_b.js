@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_0',['type',['../structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a',1,'Token::type'],['../structASTNode.html#ab8b61c0558114b2d78ccea813c8cfcd6',1,'ASTNode::type']]]
+  ['shamt_0',['shamt',['../structASMInstruction.html#a30fa5171a7eb20530921d4ecd308ded6',1,'ASMInstruction::shamt'],['../structInstruction.html#a15ccbabce9d33621d439bec574411459',1,'Instruction::shamt']]]
 ];
