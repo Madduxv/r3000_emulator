@@ -1,12 +1,18 @@
 # R3000 Emulator and Assembler
 
-### Usage
+### Requirements
+- cmake (>=3.10)
+- A C++ compiler (with C++17 support)
+- Make
+
+### Installation
 To compile, run:
 ```
 cmake .
 make
 ```
-Then, you can run it with: 
+
+### Usage
 ```
 ./r3000_emu <filename>
 ```
