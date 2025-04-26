@@ -19,24 +19,28 @@ _main:
   li $v0, 4
   nop
   nop
-  ori $a1, $zero, hello
-  addi $t3, $zero, 4
+  la $a1, hello
+  li $t3, 4
   addi $t4, $zero, 1
 loop: 
   syscall
   sub $t3, $t3, $t4
   bgtz $t3, loop
 
-  addi $v0, $zero, 0
+  ori $v0, $zero, 0
   li $t0, 4
   move $v0, $t0
   la $a1, hello2
-  ori $a1, $a1, hello2
+  la $a1, hello2
   syscall
 
   addi $v0, $zero, 10
   syscall
   // this is also a comment /
+  li $v0, 1
+  lw $a1, aWord
+  syscall
+
 .end _main
 
 

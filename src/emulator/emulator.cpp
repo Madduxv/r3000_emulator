@@ -57,7 +57,7 @@ void execute(Instruction &instr, CPU &cpu, Memory &mem) {
 
         switch (syscall_type) {
           case 1: // print_int
-            std::cout << int32_t(cpu.getRegister(4)); 
+            std::cout << static_cast<int32_t>(cpu.getRegister(4)); 
             break;
 
           case 2: { // print_float
