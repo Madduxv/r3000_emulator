@@ -1,8 +1,8 @@
 #include "assembler/asminstruction.hpp"
-#include "assembler/lexer.hpp"
 #include "assembler/symbols.hpp"
 #include <cstdint>
 #include <cstdlib>
+#include <ios>
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
@@ -41,46 +41,72 @@ uint32_t ASMInstruction::encodeRType(const ASTNode& node) {
   /*| OPCODE |  RS   |  RT   |  RD   | SHAMT | FUNCT | */
   /*| 6-bits | 5-bit | 5-bit | 5-bit | 5-bit | 6-bit | */
 
+  uint32_t opcode = 0;
+  uint32_t rs     = 0;
+  uint32_t rt     = 0;
+  uint32_t rd     = 0;
+  uint32_t shamt  = 0;
+  uint32_t funct  = 0;
+
   if ("syscall" == node.val) {
     return 0x0000000C;
   }
 
-  if (node.args.size() < 3) {
+  if ("jr" != node.val && "jalr" != node.val && node.args.size() < 3) {
     std::cout << "Instruction is missing arguments: " << node.val << std::endl;
     return 0;
   }
 
-  if (!( registers.find(node.args[0].val) != registers.end() && 
-    (registers.find(node.args[1].val) != registers.end() || 
-    registers.find(node.args[2].val) != registers.end()) )) {
-
+  if (registers.find(node.args[0].val) == registers.end()) {
     std::cout << "Instruction has incorrect format: " << node.val << std::endl;
-
+    exit(1);
   }
 
+  if (( "jr" != node.val) && 
+     !( registers.find(node.args[1].val) != registers.end() || 
+        registers.find(node.args[2].val) != registers.end())) {
+    std::cout << "Instruction has incorrect format: " << node.val << std::endl;
+    exit(1);
+  }
+
+  uint32_t instruction = 0;
   opcode = 0x00;
   funct = r_type.at(node.val);
 
-  if (node.val == "sll" || node.val == "srl" || node.val == "sra") {
-    rd = registers.at(node.args[0].val);
-    rt = registers.at(node.args[1].val);
-    shamt = std::stoul(node.args[2].val, nullptr, 0);
-    rs = 0; // rs isn't used for shift instructions
-  }  else {
-    rd = registers.at(node.args[0].val);
-    rs = registers.at(node.args[1].val);
-    rt = registers.at(node.args[2].val);
-    shamt = 0; // no shamt for non-shift instruction
-  }
+  try {
 
-  // Pack the fields into a 32-bit word
-  uint32_t instruction = 0;
-  instruction |= (opcode & 0x3F) << 26;
-  instruction |= (rs     & 0x1F) << 21;
-  instruction |= (rt     & 0x1F) << 16;
-  instruction |= (rd     & 0x1F) << 11;
-  instruction |= (shamt  & 0x1F) << 6;
-  instruction |= (funct  & 0x3F);
+    if (node.val == "sll" || node.val == "srl" || node.val == "sra") {
+      rd = registers.at(node.args[0].val);
+      rt = registers.at(node.args[1].val);
+      shamt = std::stoul(node.args[2].val, nullptr, 0);
+
+    } else if ("jr" == node.val) {
+      rs = registers.at(node.args.at(0).val);
+
+    } else if ("jalr" == node.val) {
+      rd = registers.at(node.args.at(0).val);
+      rs = registers.at(node.args.at(1).val);      
+
+    } else {
+      rd = registers.at(node.args[0].val);
+      rs = registers.at(node.args[1].val);
+      rt = registers.at(node.args[2].val);
+      shamt = 0; // no shamt for non-shift instruction
+
+    }
+    // Pack the fields into a 32-bit word
+    instruction |= (opcode & 0x3F) << 26;
+    instruction |= (rs     & 0x1F) << 21;
+    instruction |= (rt     & 0x1F) << 16;
+    instruction |= (rd     & 0x1F) << 11;
+    instruction |= (shamt  & 0x1F) << 6;
+    instruction |= (funct  & 0x3F);
+
+    return instruction;
+  }
+  catch (std::out_of_range) {
+    std::cout << "Unknown registers for instruction (" << node << ")"<< std::endl;
+  }
 
   return instruction;
 }
@@ -96,7 +122,11 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
   /*| OPCODE |  RS   |  RT   | Immediate | */
   /*| 6-bits | 5-bit | 5-bit | 16-bits   | */
 
-  if ("lw" != node.val && "blez" != node.val && "bgtz" != node.val && node.args.size() < 3) {
+  uint32_t opcode = 0;
+  uint32_t rs     = 0;
+  uint32_t rt     = 0;
+  uint32_t imm    = 0;
+  if ("lw" != node.val && "lui" != node.val && "blez" != node.val && "bgtz" != node.val && "sw" != node.val && node.args.size() < 3) {
     std::cout << "Instruction is missing arguments: " << node.val << std::endl;
     return 0;
   }
@@ -125,10 +155,34 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
       imm = std::stoul(node.args.at(1).val, nullptr, 0);
       rs = registers.at(node.args.at(2).val);
 
-    } else if ("lw" == node.val || "lui" == node.val) {
-      imm = std::stoul(node.args.at(1).val, nullptr, 0);
-      rs = 0;
+    } else if ("lw" == node.val) {
+      // lw $t0, LENGTH
+      // lw $t0, 0($t2)
+      if (node.args.size() == 3) {
+        // lw $t0, offset($t2)
+        imm = std::stoul(node.args.at(1).val, nullptr, 0);
+        rs = registers.at(node.args.at(2).val);
+      } else if (node.args.size() == 2) {
+        // lw $t0, IMM     <- no base register, rs = 0
+        imm = std::stoul(node.args.at(1).val, nullptr, 0);
+        rs = 0;
+      }
 
+    } else if ("lui" == node.val) {
+      std::cout << "did we make it here?" << std::endl;
+      rt = registers.at( node.args[0].val );
+      imm = std::stoul(node.args.at(1).val, nullptr, 0) << 16;
+    } else if ("sw" == node.val) {
+      if (node.args.size() == 3) {
+        imm = std::stoul(node.args.at(1).val, nullptr, 0);
+        rs = registers.at(node.args.at(2).val);
+      } else if (node.args.size() == 2 && registers.find(node.args.at(1).val) == registers.end()) {
+        imm = std::stoul(node.args.at(1).val, nullptr, 0);
+        rs = 0;
+      } else if (node.args.size() == 2) {
+        imm = 0;
+        rs = registers.at(node.args.at(1).val);
+      }
     } else {
       rs = registers.at(node.args.at(1).val);
       imm = std::stoul(node.args.at(2).val, nullptr, 0);
@@ -136,6 +190,14 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
 
   } catch (std::out_of_range) {
     std::cout << "Unknown registers for instruction (" << node << ")"<< std::endl;
+    uint32_t instruction = 0;
+    instruction |= (opcode & 0x3F) << 26;
+    instruction |= (rs     & 0x1F) << 21;
+    instruction |= (rt     & 0x1F) << 16;
+    instruction |= (imm    & 0xFFFF);
+    std::cout << "Instr: 0x" << std::hex << instruction<< std::endl;
+  } catch (std::invalid_argument) {
+    std::cout << "Invalide argument: " << node << std::endl;
   }
 
   uint32_t instruction = 0;
@@ -159,17 +221,23 @@ uint32_t ASMInstruction::encodeJType(const ASTNode& node) {
   /*| OPCODE | Address | */
   /*| 6-bits | 26-bits | */
 
+  uint32_t opcode = 0;
+  uint32_t rs     = 0;
+  uint32_t rt     = 0;
+  uint32_t rd     = 0;
+  uint32_t shamt  = 0;
+  uint32_t funct  = 0;
   if (node.args.size() < 1) {
     std::cout << "Instruction is missing arguments: " << node.val << std::endl;
     return 0;
   }
 
   opcode = j_type.at(node.val);
-  
+
   uint32_t targetAddr = std::stoul(node.args[0].val, nullptr, 0); // should be pre-resolved
 
   // word-align and fit to 26 bits (even though I don't support full 26-bit addresses yet)
-  addr = (targetAddr >> 2) & 0x03FFFFFF;
+  uint32_t addr = (targetAddr >> 2) & 0x03FFFFFF;
 
   return (opcode << 26) | addr;
 }

@@ -21,13 +21,14 @@ std::unordered_map<std::string, uint16_t> j_type = {
 std::unordered_map<std::string, uint16_t> i_type = {
   { "beq", 0x04  },  { "bne", 0x05  },  { "blez", 0x06  }, { "bgtz", 0x07  },
   { "addi", 0x08  }, { "addiu", 0x09 }, { "slti", 0x0A  }, { "sltiu", 0x0B  },
-  { "andi", 0x0C }, { "ori", 0x0D  },  { "xori", 0x0E },  { "lui", 0x0F  },  
-  { "lh", 0x21  }, { "lw", 0x23  }, { "lbu", 0x24  },  { "sb", 0x28 },    
-  { "sw", 0x2b  },
+  { "andi", 0x0C },  { "ori", 0x0D  },  { "xori", 0x0E },  { "lui", 0x0F  }, 
+  { "lb", 0x20   },  { "lh", 0x21  },   { "lw", 0x23  },   { "lbu", 0x24  },  
+  { "lhu", 0x25 },   { "sb", 0x28 },    { "sh", 0x29},     { "sw", 0x2b  },
 };
 
 std::unordered_map<std::string, uint16_t> pseudo = {
-  { "li", 0x00  }, {"la", 0x00}, {"move", 0x00}, {"nop", 0x00},
+  { "li", 0  }, {"la", 0}, {"move", 0}, {"nop", 0}, {"bnez", 0}, 
+  {"beqz", 0}, {"b", 0}, {"blt", 0}, {"bgt", 0}, {"bge", 0}
 };
 // I probably should have just used the number after the $
 std::unordered_map<std::string, uint16_t> registers = {
