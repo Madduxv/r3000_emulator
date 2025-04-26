@@ -6,6 +6,7 @@
 #include "emulator/memory.hpp"
 #include <cstdint>
 #include <cstdlib>
+#include <functional>
 #include <iostream>
 #include <ostream>
 #include <fstream>
@@ -43,7 +44,7 @@ std::string readFile(const std::string& filename) {
  * @return          A new Assembler object.
  */
 Assembler::Assembler(const std::string& fileName, Memory& mem): varAddrPtr(0x5000) {
-  std::string file = readFile("testFile.s");
+  std::string file = readFile(fileName);
   std::vector<Token> tokenizedFile = tokenize(file);
   this->AST = parse(tokenizedFile);
   getSymbols(this->AST, mem);
@@ -125,66 +126,127 @@ bool isPseudo(const ASTNode node) {
  */
 void Assembler::encodePseudo(const ASTNode node, Memory& mem) {
 
-  std::stringstream ss("");
+  // If I can't have O(1) lookup with a switch statement, I'll make O(1) lookup
+  std::unordered_map<std::string, std::function<void(ASTNode node, std::stringstream& ss, Memory& mem)>> handlers = {
 
-  if (node.val == "move") {
-    // move $reg1, $reg2 => add $reg1, $reg2, $zero
-    if (node.args.size() != 2) {
-      std::cout << "Not enough arguments for instruction: move" << std::endl;
-      exit(1);
-    }
+    {"nop", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      // nop => sll $zero, $zero, 0
+      ss << "sll $zero, $zero, 0";
+      encodeNewNodes(ss.str(), mem);
+    }},
 
-    ss << "add " << node.args.at(0).val << ", " 
-      << node.args.at(1).val << ", " << "$zero";
+    {"la", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      ss << "ori " << node.args.at(0).val << ",  $zero, " << node.args.at(1).val;
+      encodeNewNodes(ss.str(), mem);
+    }},
 
-    encodeNewNodes(ss.str(), mem);
-  }
+    {"bnez", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      ss << "bne " << node.args.at(0).val << ", $zero, " << node.args.at(1).val;
+      encodeNewNodes(ss.str(), mem);
+    }},
 
-  else if (node.val == "li") {
+    {"beqz", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      ss << "beq " << node.args.at(0).val << ", $zero, " << node.args.at(1).val;
+      encodeNewNodes(ss.str(), mem);
+    }},
 
-    if (node.args.size() != 2) {
-      std::cout << "Not enough arguments for instruction: li" << std::endl;
-      exit(1);
-    }
+    {"b", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      ss << "beq $zero, $zero, " << node.args.at(0).val;
+      encodeNewNodes(ss.str(), mem);
+    }},
 
-    // li $reg, imm -> ori $reg, $zero, imm (simple case)
-    // For large imm split into lui + ori
-    uint32_t imm = std::stoul(node.args.at(1).val, nullptr, 0);
+    {"blt", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      // slt $at, $rs, $rt     # $at = ($rs < $rt)
+      // bne $at, $zero, label # if $at != 0, branch
+      std::stringstream slt_ss;
+      std::stringstream bne_ss;
+      slt_ss << "slt $at, " << node.args.at(0).val << ", " << node.args.at(1).val;
+      bne_ss << "bne $at, $zero, " << node.args.at(2).val;
+      encodeNewNodes(slt_ss.str(), mem);
+      encodeNewNodes(bne_ss.str(), mem);
+    }},
 
-    if (imm <= 0xFFFF) {
-      ss << "ori " << node.args.at(0).val << ", $zero, " 
-        << node.args.at(1).val;
+    {"bgt", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      // slt $at, $rt, $rs     # $at = ($rs > $rt)
+      // bne $at, $zero, label # if $at != 0, branch
+      std::stringstream slt_ss;
+      std::stringstream bne_ss;
+      slt_ss << "slt $at, " << node.args.at(1).val << ", " << node.args.at(0).val;
+      bne_ss << "bne $at, $zero, " << node.args.at(2).val;
+      encodeNewNodes(slt_ss.str(), mem);
+      encodeNewNodes(bne_ss.str(), mem);
+    }},
+
+    {"bge", [this](ASTNode node, std::stringstream& ss, Memory& mem){
+      // slt $at, $rs, $rt     # $at = ($rs < $rt)
+      // bne $at, $zero, label # if $at != 0, branch
+      std::stringstream slt_ss;
+      std::stringstream bne_ss;
+      slt_ss << "slt $at, " << node.args.at(0).val << ", " << node.args.at(1).val;
+      bne_ss << "bne $at, $zero, " << node.args.at(2).val;
+      encodeNewNodes(slt_ss.str(), mem);
+      encodeNewNodes(bne_ss.str(), mem);
+    }},
+
+    {"move", [this](ASTNode node, std::stringstream &ss, Memory& mem){ 
+      // move $reg1, $reg2 => add $reg1, $reg2, $zero
+      if (node.args.size() != 2) {
+        std::cout << "Not enough arguments for instruction: move" << std::endl;
+        exit(1);
+      }
+
+      ss << "add " << node.args.at(0).val << ", " 
+        << node.args.at(1).val << ", " << "$zero";
 
       encodeNewNodes(ss.str(), mem);
+    }},
 
-    } else {
-      // lui + ori
-      uint32_t upper = (imm >> 16) & 0xFFFF;
-      uint32_t lower = imm & 0xFFFF;
-      const std::string& reg = node.args.at(0).val;
+    {"li", [this](ASTNode node, std::stringstream& ss, Memory& mem){
 
-      std::stringstream ss_lui;
-      std::stringstream ss_ori;
+      if (node.args.size() != 2) {
+        std::cout << "Not enough arguments for instruction: li" << std::endl;
+        exit(1);
+      }
 
-      ss_lui << "lui " << reg << ", " << upper;
-      ss_ori << "ori " << reg << ", " << reg << ", " << lower;
+      // li $reg, imm -> ori $reg, $zero, imm (simple case)
+      // For large imm split into lui + ori
+      uint32_t imm = std::stoul(node.args.at(1).val, nullptr, 0);
 
-      encodeNewNodes(ss.str(), mem);
-      encodeNewNodes(ss.str(), mem);
-    }
-  }
-  else if (node.val == "nop") {
-    // nop => sll $zero, $zero, 0
-    ss << "sll $zero, $zero, 0";
-    encodeNewNodes(ss.str(), mem);
-  } else if (node.val == "la") {
-    ss << "ori" << node.args.at(0).val << ",  $zero, " << node.args.at(1).val;
-    encodeNewNodes(ss.str(), mem);
-  }
-  else {
+      if (imm <= 0xFFFF) {
+        ss << "ori " << node.args.at(0).val << ", $zero, " 
+          << node.args.at(1).val;
+
+        encodeNewNodes(ss.str(), mem);
+
+      } else {
+        // lui + ori
+        uint32_t upper = (imm >> 16) & 0xFFFF;
+        uint32_t lower = imm & 0xFFFF;
+        const std::string& reg = node.args.at(0).val;
+
+        std::stringstream ss_lui;
+        std::stringstream ss_ori;
+
+        ss_lui << "lui " << reg << ", " << upper;
+        ss_ori << "ori " << reg << ", " << reg << ", " << lower;
+
+        encodeNewNodes(ss_lui.str(), mem);
+        encodeNewNodes(ss_ori.str(), mem);
+      }
+    }},
+
+  };
+
+
+  if (handlers.find(node.val) == handlers.end()) {
     // How did we get here?
-    throw std::runtime_error("Unknown pseudo-instruction: " + node.val);
+    std::cout << "Unknown pseudo-instruction: " << node.val << std::endl;
+    exit(1);
+  } else {
+    std::stringstream ss;
+    handlers[node.val](node, ss, mem); 
   }
+
 }
 
 

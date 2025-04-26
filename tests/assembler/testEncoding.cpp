@@ -1,6 +1,8 @@
 #include "assembler/asminstruction.hpp"
 #include "assembler/lexer.hpp"
 #include "assembler/parser.hpp"
+#include <iostream>
+#include <ostream>
 #include "test/testEncoding.hpp"
 
 
@@ -18,10 +20,12 @@ uint32_t testEncoding(const std::string input) {
 
 
   // debug prints--------------------
-  /*for(const ASTNode node : nodes) {*/
-  /*  std::cout << node << std::endl;*/
-  /*}*/
-  /*std::cout << encoded << std::endl;*/
+  // for(const ASTNode node : nodes) {
+  //   if ("sll" == node.val) {
+  //     std::cout << node << std::endl;
+  //     std::cout << encoded << std::endl;
+  //   }
+  // }
   // --------------------------------
 
   return encoded;
