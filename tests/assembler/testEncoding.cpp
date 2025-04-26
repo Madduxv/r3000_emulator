@@ -20,12 +20,14 @@ uint32_t testEncoding(const std::string input) {
 
 
   // debug prints--------------------
+
   // for(const ASTNode node : nodes) {
-  //   if ("sll" == node.val) {
+  //   if ("lb" == node.val) {
   //     std::cout << node << std::endl;
   //     std::cout << encoded << std::endl;
   //   }
   // }
+
   // --------------------------------
 
   return encoded;

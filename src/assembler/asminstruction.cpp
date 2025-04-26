@@ -122,20 +122,20 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
   /*| OPCODE |  RS   |  RT   | Immediate | */
   /*| 6-bits | 5-bit | 5-bit | 16-bits   | */
 
-  uint32_t opcode = 0;
+  uint32_t opcode = i_type.at(node.val);
   uint32_t rs     = 0;
   uint32_t rt     = 0;
   uint32_t imm    = 0;
-  if ("lw" != node.val && "lui" != node.val && "blez" != node.val && "bgtz" != node.val && "sw" != node.val && node.args.size() < 3) {
+
+  if ( "lw" != node.val && "lui" != node.val && "blez" != node.val 
+    && "bgtz" != node.val && "sw" != node.val && node.args.size() < 3) {
     std::cout << "Instruction is missing arguments: " << node.val << std::endl;
     return 0;
   }
 
-  opcode = i_type.at(node.val);
-  rt = registers.at(node.args.at(0).val); // rt will always be first
-
   // Ex: lw $t0, 4($t2), args[1] will be 4 and not a register
   try {
+    rt = registers.at(node.args.at(0).val); // rt will always be first
 
     if ("beq" == node.val || "bne" == node.val) {
       int32_t label_addr = std::stoul(node.args.at(2).val, nullptr, 0);  // This assumes absolute byte address
@@ -151,11 +151,14 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
       rs = registers.at(node.args.at(0).val);
       rt = 0;
 
-    } else if (registers.find(node.args.at(1).val) == registers.end()) {
-      imm = std::stoul(node.args.at(1).val, nullptr, 0);
-      rs = registers.at(node.args.at(2).val);
+    // } else if (registers.find(node.args.at(1).val) == registers.end()) {
+    //   imm = std::stoul(node.args.at(1).val, nullptr, 0);
+    //   rs = registers.at(node.args.at(2).val);
 
-    } else if ("lw" == node.val) {
+    } else if ("lw" == node.val || "lb" == node.val || "lbu" == node.val || "lh" == node.val || "lhu" == node.val) {
+      if (registers.find(node.args.at(0).val) == registers.end()) {
+        std::cout << "Unrecognized register: " << node.args.at(0).val << std::endl;
+      }
       // lw $t0, LENGTH
       // lw $t0, 0($t2)
       if (node.args.size() == 3) {
@@ -163,16 +166,15 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
         imm = std::stoul(node.args.at(1).val, nullptr, 0);
         rs = registers.at(node.args.at(2).val);
       } else if (node.args.size() == 2) {
-        // lw $t0, IMM     <- no base register, rs = 0
+        // lw $t0, LENGTH     <- no base register, rs = 0
         imm = std::stoul(node.args.at(1).val, nullptr, 0);
         rs = 0;
       }
 
     } else if ("lui" == node.val) {
-      std::cout << "did we make it here?" << std::endl;
       rt = registers.at( node.args[0].val );
-      imm = std::stoul(node.args.at(1).val, nullptr, 0) << 16;
-    } else if ("sw" == node.val) {
+      imm = std::stoul(node.args.at(1).val, nullptr, 0);
+    } else if ("sw" == node.val || "sb" == node.val || "sh" == node.val) {
       if (node.args.size() == 3) {
         imm = std::stoul(node.args.at(1).val, nullptr, 0);
         rs = registers.at(node.args.at(2).val);
@@ -195,7 +197,7 @@ uint32_t ASMInstruction::encodeIType(const ASTNode& node, uint32_t address) {
     instruction |= (rs     & 0x1F) << 21;
     instruction |= (rt     & 0x1F) << 16;
     instruction |= (imm    & 0xFFFF);
-    std::cout << "Instr: 0x" << std::hex << instruction<< std::endl;
+    std::cout << "Instr: 0x" << std::hex << instruction << std::endl;
   } catch (std::invalid_argument) {
     std::cout << "Invalide argument: " << node << std::endl;
   }
